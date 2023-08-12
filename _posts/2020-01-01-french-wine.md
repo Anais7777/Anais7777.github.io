@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "French Wine has to compete with many new world wines"
+title:  "test French Wine has to compete with many new world wines"
 categories: [ Lifestyle ]
 tags: [France]
 image: assets/images/5.jpg
