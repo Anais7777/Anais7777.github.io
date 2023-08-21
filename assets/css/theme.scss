@@ -657,7 +657,7 @@ footer {
 
 @media (max-width: 600px) {
     .nav-icon, .sidebar, .share, .wrap-search {
-        position:relative;
+        position:absolute;
     }
     .container {
         padding-left:15px;
@@ -686,7 +686,7 @@ footer {
     }
     
     #menu ul {
-        padding: 80px 30px 80px 30px;
+        padding: 80px 80px 30px 80px;
     }
     .related-posts {
         h2 {
