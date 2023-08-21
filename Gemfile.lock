@@ -143,13 +143,13 @@ GEM
     tzinfo (1.2.9)
       thread_safe (~> 0.1)
     unicode-display_width (1.7.0)
-    wdm (0.1.1)
     webrick (1.8.1)
     zeitwerk (2.3.0)
 
 PLATFORMS
   x64-mingw-ucrt
   x64-mingw32
+  x86_64-darwin-22
 
 DEPENDENCIES
   bootstrap (~> 4.4.1)
@@ -161,7 +161,6 @@ DEPENDENCIES
   jekyll-sitemap
   kramdown
   rouge
-  wdm (>= 0.1.0)
   webrick (~> 1.8)
 
 BUNDLED WITH
