@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Much more than a desert: A trip into the Sahara"
-categories: [ Travel ]
+categories: [ Grecia ]
 image: assets/images/16.jpg
 ---
 

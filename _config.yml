@@ -1,7 +1,7 @@
 # Site
-name: "Scriu cu Tolk"
-title: "Scriu cu Tolk"
-description: "I will take you on the magic world of Scriu cu Tolk!"
+name: "scriucutolk"
+title: "scriucutolk"
+description: "Un plan elaborat al viitoarei tale călătorii"
 logo: 'assets/images/logo.png'
 favicon: 'assets/images/favicon.png'
 google_analytics: 'UA-xxxxxxxx-1'
@@ -10,16 +10,16 @@ include: ["_pages"]
 permalink: /:title/
 email: wowthemesnet@gmail.com
 
-# Authors
-authors:
-  sal:
-    name: Sal
-    display_name: Sal
-    avatar: 'assets/images/avatar-sal.png'
-    email: wowthemesnet@gmail.com
-    web: https://www.wowthemes.net/donate/
-    twitter: https://twitter.com/wowthemesnet
-    description: "Author of Memoirs, a Bootstrap Medium styled template available for Jekyll. You are currently previewing Jekyll template demo."
+# # Authors
+# authors:
+#   sal:
+#     name: Sal
+#     display_name: Sal
+#     avatar: 'assets/images/avatar-sal.png'
+#     email: wowthemesnet@gmail.com
+#     web: https://www.wowthemes.net/donate/
+#     twitter: https://twitter.com/wowthemesnet
+#     description: "Author of Memoirs, a Bootstrap Medium styled template available for Jekyll. You are currently previewing Jekyll template demo."
 
 # Plugins
 plugins:
