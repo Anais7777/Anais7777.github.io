@@ -117,7 +117,7 @@ img, img:hover {
 .navbar-brand img {
     max-height:30px;
     margin-bottom:80px;
-    margin-top:10px;
+    margin-top:15px;
 }
 
 .nav-icon {
@@ -757,12 +757,14 @@ footer {
     .article-post {
         font-size:15px;
     }
+
     .wrap-search {
-        .fa-search {
-            display:none;
-        }
-        .form-control {
-            height:35px;
-        }
+        position: absolute;
+        display: flex;
+        align-items: center;
+        left: 100; 
+        bottom: 25px;
+        width: 100%; 
+        padding-right: 85px; 
     }
 }
