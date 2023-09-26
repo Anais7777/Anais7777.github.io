@@ -41,7 +41,9 @@
                 <span class="post-name font-weight-bold">{{ author.display_name }}</span> 
                 {% endif %}
                 <span class="post-date">{{ post.date | date_to_string }}</span>
-                </span>
+                {% for category in post.categories %}
+                <a class="smoothscroll badge badge-primary text-capitalize" href="{{site.baseurl}}/categories#{{ category | replace: " ","-" }}">{{ category }}</a>
+                {% endfor %}
                 <div class="clearfix"></div>
             </div>
         </div>

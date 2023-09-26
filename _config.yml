@@ -1,7 +1,7 @@
 # Site
 name: "scriucutolk"
 title: "scriucutolk"
-description: "Un plan elaborat al viitoarei tale călătorii"
+description: "Un plan al viitoarei tale călătorii"
 logo: 'assets/images/logo.png'
 favicon: 'assets/images/favicon.png'
 google_analytics: 'UA-xxxxxxxx-1'
@@ -48,7 +48,6 @@ markdown: kramdown
 kramdown:
    syntax_highlighter_opts:
       disable : true
-
 
 
 # Adsense (change to "enabled" to activate, also your client id and ad slot. Create a new ad unit from your Adsense account to get the slot.)
