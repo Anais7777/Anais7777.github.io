@@ -436,6 +436,145 @@ img, img:hover {
     -moz-box-shadow: 0 7px 50px 0 rgba(84,110,122,.15);
     box-shadow: 0 7px 50px 0 rgba(84,110,122,.15);
 }
+#post {
+    width: 65%;
+    height: auto;
+    transition: transform .2s;
+    background-color: $primary
+}
+
+#post:hover {
+    transform:scale(1.2);
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+figcaption {
+   color: rgb(176, 176, 176);
+   font-style: italic;
+   text-align: center;
+   font-size: 18px;
+}
+
+// grid of 3 photos
+.container-post {
+    justify-content: center;
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-areas: 
+        "item2 item2 item1"
+        "item2 item2 item3"
+        "item2 item2 item3";
+}
+
+.item1:hover {
+    transform: scale(1.7);
+}
+
+.item1 {
+    grid-area: item1;
+    transition: transform .2s;
+    background-color: $primary;
+    width: auto;
+    height: auto;
+}
+
+.item2 {
+    grid-area: item2;
+    transition: transform .2s;
+    background-color: $primary;
+    width: auto;
+    height: auto;
+}
+
+.item2:hover {
+    transform: scale(1.2);
+}
+
+.item3 {
+    grid-area: item3;
+    transition: transform .2s;
+    background-color: $primary;
+    width: auto;
+    height: auto;
+}
+
+.item3:hover {
+    transform: scale(1.7);
+}
+
+// grid of 3 photos
+.container-post3 {
+    justify-content: center;
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-areas: 
+        "item2 item2 item1"
+        "item2 item2 item3"
+        "item2 item2 item3";
+}
+
+.item1:hover {
+    transform: scale(1.7);
+}
+
+.item1 {
+    grid-area: item1;
+    transition: transform .2s;
+    background-color: $primary;
+    width: auto;
+    height: auto;
+}
+
+.item2 {
+    grid-area: item2;
+    transition: transform .2s;
+    background-color: $primary;
+    width: auto;
+    height: auto;
+}
+
+.item2:hover {
+    transform: scale(1.2);
+}
+
+// grid of 2 photos
+.container-post2 {
+    justify-content: center;
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-areas: 
+        "item2b item1b";
+}
+
+.item1b:hover {
+    transform: scale(1.7);
+}
+
+.item1b {
+    grid-area: item1b;
+    transition: transform .2s;
+    background-color: $primary;
+    width: auto;
+    height: auto;
+}
+
+.item2b {
+    grid-area: item2b;
+    transition: transform .2s;
+    background-color: $primary;
+    width: auto;
+    height: auto;
+}
+
+.item2b:hover {
+    transform: scale(1.5);
+}
+
 .entry-header {
     .author-thumb {
         width:50px;
