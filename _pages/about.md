@@ -16,4 +16,4 @@ Sunt Ana-ochi albaștri și vreau să-ți povestesc de ce scriu cu tolk. 💙
 
 Așa a apărut scriucutolk.md, “tolk” în engleză însemnând “o persoană care traduce/interpretează cuvintele unui vorbitor în limba ascultătorilor săi”. În cazul meu, “traduc” cititorilor experiențele de care am parte, oferind date exacte sau sfaturi pe care nu le găsiți altundeva.
 
-Aici descriu călătoriile “testate” pe pielea mea si văzute cu ochii mei. Sper că toată informația sistematizată la un loc să vă poată ajuta când planificați următoarea ✨călătorie de vis✨.
+Aici descriu călătoriile “testate” pe pielea mea și văzute cu ochii mei. Sper că toată informația sistematizată la un loc să vă poată ajuta când planificați următoarea ✨călătorie de vis✨.
