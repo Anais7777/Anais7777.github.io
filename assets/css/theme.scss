@@ -457,7 +457,6 @@ figcaption {
    color: rgb(176, 176, 176);
    font-style: italic;
    text-align: center;
-   font-size: 18px;
 }
 
 // grid of 3 photos
@@ -906,4 +905,8 @@ footer {
         width: 100%; 
         padding-right: 85px; 
     }
+
+    figcaption {
+        font-size:12px ;
+     }
 }
