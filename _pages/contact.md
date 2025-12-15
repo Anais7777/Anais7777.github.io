@@ -67,16 +67,19 @@ document.getElementById('contact-form').addEventListener('submit', async functio
             messageDiv.style.display = 'block';
             form.reset();
         } else {
-            // Error
+            // Error - show more details
+            const errorData = await result;
             messageDiv.className = 'alert alert-danger';
-            messageDiv.textContent = 'Eroare la trimitere. Te rugăm să încerci din nou.';
+            messageDiv.textContent = errorData.message || 'Eroare la trimitere. Te rugăm să încerci din nou.';
             messageDiv.style.display = 'block';
+            console.error('Form submission error:', errorData);
         }
     } catch (error) {
         // Network error
         messageDiv.className = 'alert alert-danger';
-        messageDiv.textContent = 'Eroare la trimitere. Te rugăm să încerci din nou.';
+        messageDiv.textContent = 'Eroare de conexiune. Te rugăm să verifici conexiunea la internet și să încerci din nou.';
         messageDiv.style.display = 'block';
+        console.error('Network error:', error);
     } finally {
         submitBtn.disabled = false;
         submitBtn.value = 'Send';

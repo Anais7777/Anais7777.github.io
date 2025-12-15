@@ -3,7 +3,17 @@
 
 const { google } = require('googleapis');
 
-export default async function handler(req, res) {
+module.exports = async (req, res) => {
+  // Enable CORS
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  // Handle preflight
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+
   // Only allow POST requests
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
@@ -15,12 +25,29 @@ export default async function handler(req, res) {
     const serviceAccountKey = process.env.GOOGLE_SERVICE_ACCOUNT_KEY;
 
     if (!sheetId || !serviceAccountKey) {
-      console.error('Missing environment variables');
-      return res.status(500).json({ error: 'Server configuration error' });
+      console.error('Missing environment variables:', {
+        hasSheetId: !!sheetId,
+        hasServiceAccountKey: !!serviceAccountKey
+      });
+      return res.status(500).json({ 
+        error: 'Server configuration error',
+        message: 'Missing required environment variables'
+      });
     }
 
     // Parse service account credentials
-    const credentials = JSON.parse(serviceAccountKey);
+    let credentials;
+    try {
+      credentials = typeof serviceAccountKey === 'string' 
+        ? JSON.parse(serviceAccountKey) 
+        : serviceAccountKey;
+    } catch (parseError) {
+      console.error('Error parsing service account key:', parseError);
+      return res.status(500).json({ 
+        error: 'Invalid service account key format',
+        message: parseError.message
+      });
+    }
 
     // Authenticate with Google Sheets API
     const auth = new google.auth.GoogleAuth({
@@ -55,7 +82,8 @@ export default async function handler(req, res) {
     return res.status(500).json({
       error: 'Failed to submit form',
       message: error.message,
+      details: process.env.NODE_ENV === 'development' ? error.stack : undefined
     });
   }
-}
+};
 
