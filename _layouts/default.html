@@ -177,16 +177,10 @@
 <script id="dsq-count-scr" src="//{{site.disqus}}.disqus.com/count.js"></script>
 {% endif %}
 
-<!-- Vercel Analytics - Automatically injected by Vercel when Web Analytics is enabled -->
+<!-- Vercel Web Analytics -->
 {% if jekyll.environment == 'production' %}
-<!-- The analytics script will be automatically added by Vercel when deployed -->
-<!-- If you need manual implementation, uncomment the following: -->
-<!--
-<script>
-  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-</script>
-<script defer src="/_vercel/insights/script.js"></script>
--->
+<!-- The analytics script will be automatically injected by Vercel during deployment -->
+<!-- For local development, the analytics package is available via npm -->
 {% endif %}
 
 <!-- Structured Data - Organization -->
