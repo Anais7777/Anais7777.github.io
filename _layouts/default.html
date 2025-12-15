@@ -48,7 +48,7 @@
 <link rel="icon" href="{{ site.baseurl }}/assets/images/favicon.png">
 <link rel="apple-touch-icon" href="{{ site.baseurl }}/assets/images/favicon.png">
 
-<title>{% if page.title %}{{ page.title }} | {{ site.name }}{% else %}{{ site.name }} - {{ site.description }}{% endif %}</title>
+<title>{% if page.title %}{% if page.title == 'Home' %}Acasă{% else %}{{ page.title }}{% endif %} | {{ site.name }}{% else %}{{ site.name }}{% endif %}</title>
 
 {% seo %}
     
@@ -177,10 +177,15 @@
 <script id="dsq-count-scr" src="//{{site.disqus}}.disqus.com/count.js"></script>
 {% endif %}
 
-<!-- Vercel Web Analytics -->
+<!-- Vercel Analytics -->
 {% if jekyll.environment == 'production' %}
-<!-- The analytics script will be automatically injected by Vercel during deployment -->
-<!-- For local development, the analytics package is available via npm -->
+<script>
+  // Vercel Analytics for static sites
+  // When deployed on Vercel, analytics is automatically enabled
+  // This script ensures it works properly
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="https://va.vercel-scripts.com/v1/script.debug.js"></script>
 {% endif %}
 
 <!-- Structured Data - Organization -->
