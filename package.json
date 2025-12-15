@@ -1,0 +1,20 @@
+{
+  "name": "scriucutolk",
+  "version": "1.0.0",
+  "description": "Un plan al viitoarei tale călătorii",
+  "scripts": {
+    "build": "jekyll build",
+    "serve": "jekyll serve"
+  },
+  "dependencies": {
+    "@vercel/analytics": "^1.3.1"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Anais7777/Anais7777.github.io"
+  },
+  "author": "Ana",
+  "license": "MIT"
+}
+

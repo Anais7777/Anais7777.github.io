@@ -1,23 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ site.lang | default: 'ro' }}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% assign meta_description = page.description | default: page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 160 %}
+<meta name="description" content="{{ meta_description }}">
+{% if page.layout == 'post' %}
+  {% assign meta_keywords = page.categories | join: ', ' %}
+  {% if page.tags %}{% assign meta_keywords = meta_keywords | append: ', ' | append: page.tags | join: ', ' %}{% endif %}
+  {% if meta_keywords == '' %}{% assign meta_keywords = 'călătorii, destinații, Grecia, Turcia, Muntenegru, travel blog, ghid călătorie' %}{% endif %}
+  <meta name="keywords" content="{{ meta_keywords }}, {{ site.name }}">
+{% else %}
+  <meta name="keywords" content="călătorii, destinații, Grecia, Turcia, Muntenegru, travel blog, ghid călătorie, {{ site.name }}">
+{% endif %}
+<meta name="author" content="{{ site.name }}">
+<meta name="robots" content="index, follow">
+{% if page.date %}<meta name="date" content="{{ page.date | date_to_xmlschema }}">{% endif %}
+{% if page.last_modified_at %}<meta name="last-modified" content="{{ page.last_modified_at | date_to_xmlschema }}">{% endif %}
+<link rel="canonical" href="{{ site.url }}{{ site.baseurl }}{{ page.url | replace:'index.html','' }}">
 
-<meta property='og:title' content='scriucutolk'/>
-<meta property='og:image' content="https://i.ibb.co/HCH27H4/scriucutolk.png"/>
-<meta property='og:description' content='Hey tu, aruncă o privire, ți-ar putea fi util 🙃. Aici descriu călătoriile “testate” pe pielea mea și văzute cu ochii mei.'/>
-<meta property='og:url' content='https://www.scriucutolk.com'/>
-<!-- <meta property='og:image:width' content='1200' />
-<meta property='og:image:height' content='627' /> -->
-<meta property="og:type" content='website'/>
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+<meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url | replace:'index.html','' }}">
+<meta property="og:title" content="{% if page.title %}{{ page.title }} | {{ site.name }}{% else %}{{ site.name }}{% endif %}">
+<meta property="og:description" content="{{ meta_description }}">
+<meta property="og:image" content="{% if page.image %}{{ site.url }}{{ site.baseurl }}/{{ page.image }}{% else %}{{ site.url }}{{ site.baseurl }}/{{ site.og_image }}{% endif %}">
+<meta property="og:site_name" content="{{ site.name }}">
+<meta property="og:locale" content="{{ site.locale | default: 'ro_MD' }}">
+{% if page.layout == 'post' %}
+<meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
+{% if page.last_modified_at %}<meta property="article:modified_time" content="{{ page.last_modified_at | date_to_xmlschema }}">{% endif %}
+{% if page.categories %}{% for category in page.categories %}<meta property="article:section" content="{{ category }}">{% endfor %}{% endif %}
+{% if page.tags %}{% for tag in page.tags %}<meta property="article:tag" content="{{ tag }}">{% endfor %}{% endif %}
+{% endif %}
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url | replace:'index.html','' }}">
+<meta name="twitter:title" content="{% if page.title %}{{ page.title }} | {{ site.name }}{% else %}{{ site.name }}{% endif %}">
+<meta name="twitter:description" content="{{ meta_description }}">
+<meta name="twitter:image" content="{% if page.image %}{{ site.url }}{{ site.baseurl }}/{{ page.image }}{% else %}{{ site.url }}{{ site.baseurl }}/{{ site.og_image }}{% endif %}">
+{% if site.twitter.username %}<meta name="twitter:creator" content="@{{ site.twitter.username }}">{% endif %}
 
 <link rel="preload" href="https://fonts.googleapis.com/css?family=Sen:400,700&display=swap" as="style">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sen:400,700&display=swap">
 
 <link rel="icon" href="{{ site.baseurl }}/assets/images/favicon.png">
+<link rel="apple-touch-icon" href="{{ site.baseurl }}/assets/images/favicon.png">
 
-<title>{{ page.title }} | {{site.name}}</title>
+<title>{% if page.title %}{{ page.title }} | {{ site.name }}{% else %}{{ site.name }} - {{ site.description }}{% endif %}</title>
 
 {% seo %}
     
@@ -145,6 +176,58 @@
 {% if page.layout == 'post' %}
 <script id="dsq-count-scr" src="//{{site.disqus}}.disqus.com/count.js"></script>
 {% endif %}
+
+<!-- Vercel Analytics - Automatically injected by Vercel when Web Analytics is enabled -->
+{% if jekyll.environment == 'production' %}
+<!-- The analytics script will be automatically added by Vercel when deployed -->
+<!-- If you need manual implementation, uncomment the following: -->
+<!--
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+-->
+{% endif %}
+
+<!-- Structured Data - Organization -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "{{ site.name }}",
+  "url": "{{ site.url }}{{ site.baseurl }}",
+  "logo": "{{ site.url }}{{ site.baseurl }}/{{ site.logo }}",
+  "description": "{{ site.description }}",
+  "sameAs": []
+}
+</script>
+
+<!-- Structured Data - WebSite -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "{{ site.name }}",
+  "url": "{{ site.url }}{{ site.baseurl }}",
+  "description": "{{ site.description }}",
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ site.name }}",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ site.url }}{{ site.baseurl }}/{{ site.logo }}"
+    }
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "{{ site.url }}{{ site.baseurl }}/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
 
 </body>
 </html>

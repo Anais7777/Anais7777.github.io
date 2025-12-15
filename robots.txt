@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://scriucutolk.md/sitemap.xml
+
