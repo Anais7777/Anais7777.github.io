@@ -68,11 +68,10 @@ document.getElementById('contact-form').addEventListener('submit', async functio
             form.reset();
         } else {
             // Error - show more details
-            const errorData = await result;
             messageDiv.className = 'alert alert-danger';
-            messageDiv.textContent = errorData.message || 'Eroare la trimitere. Te rugăm să încerci din nou.';
+            messageDiv.textContent = result.message || result.error || 'Eroare la trimitere. Te rugăm să încerci din nou.';
             messageDiv.style.display = 'block';
-            console.error('Form submission error:', errorData);
+            console.error('Form submission error:', result);
         }
     } catch (error) {
         // Network error

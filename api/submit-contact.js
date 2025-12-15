@@ -62,11 +62,30 @@ module.exports = async (req, res) => {
     const email = _replyto || req.body.email || '';
     const timestamp = new Date().toISOString();
 
+    // First, try to get the sheet metadata to verify access and get sheet name
+    let sheetName = 'Sheet1'; // Default sheet name
+    try {
+      const spreadsheet = await sheets.spreadsheets.get({
+        spreadsheetId: sheetId,
+      });
+      // Get the first sheet's name
+      if (spreadsheet.data.sheets && spreadsheet.data.sheets.length > 0) {
+        sheetName = spreadsheet.data.sheets[0].properties.title;
+      }
+    } catch (metaError) {
+      console.error('Error getting sheet metadata:', metaError);
+      // Continue with default Sheet1 name - might be a permissions issue
+    }
+
     // Append data to sheet
+    // Use range that covers all 4 columns (Timestamp, Name, Email, Message)
+    const range = `${sheetName}!A1:D1`;
+    
     await sheets.spreadsheets.values.append({
       spreadsheetId: sheetId,
-      range: 'Sheet1!A:D', // Adjust range if your sheet name is different
+      range: range,
       valueInputOption: 'USER_ENTERED',
+      insertDataOption: 'INSERT_ROWS',
       resource: {
         values: [[timestamp, name || '', email, message || '']],
       },
