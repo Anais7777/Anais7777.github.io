@@ -75,3 +75,5 @@ sass:
   style: compressed
 
 exclude: [changelog.md, LICENSE.txt, README.md, Gemfile, Gemfile.lock]
+
+# Sitemap exclusions (pages with sitemap: false are automatically excluded)

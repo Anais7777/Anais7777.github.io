@@ -1,5 +1,4 @@
 ---
-
 ---
 
 $brown: #B59F62;
@@ -249,7 +248,7 @@ img, img:hover {
     color: #333;
     padding: 0;
     display: flex;
-    align-items:center;
+    align-items: stretch;
     .author-thumb {
         width:40px;
         border-radius:50%;
@@ -257,11 +256,19 @@ img, img:hover {
     }
     .card {
         border:0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
         &:hover {           
            .card-title a { 
                 background-size: 100% 100%;
             }
         }
+    }
+    .card-body {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 auto;
     }
     .card-title {
         font-weight:700;

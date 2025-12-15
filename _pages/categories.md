@@ -1,5 +1,6 @@
 ---
 layout: categories
 title: Destinații
-permalink: /categories
+permalink: /categories/
+sitemap: false
 ---

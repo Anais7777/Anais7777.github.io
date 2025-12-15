@@ -4,3 +4,7 @@ _site
 .sass-cache
 *~
 .jekyll-cache
+
+# Google Service Account Keys (never commit these!)
+*-service-account*.json
+*credentials*.json

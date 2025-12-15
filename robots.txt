@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /authors
+Disallow: /categories
 
 Sitemap: https://scriucutolk.md/sitemap.xml
 
