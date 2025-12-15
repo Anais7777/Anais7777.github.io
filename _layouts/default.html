@@ -179,13 +179,13 @@
 
 <!-- Vercel Analytics -->
 {% if jekyll.environment == 'production' %}
-<script>
-  // Vercel Analytics for static sites
-  // When deployed on Vercel, analytics is automatically enabled
-  // This script ensures it works properly
-  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+<script type="module">
+  // Vercel Analytics for static sites (Jekyll)
+  // Note: @vercel/analytics/next is for Next.js React components only
+  // For Jekyll static sites, we use the browser build with inject()
+  import { inject } from 'https://cdn.jsdelivr.net/npm/@vercel/analytics@1/dist/analytics.browser.js';
+  inject();
 </script>
-<script defer src="https://va.vercel-scripts.com/v1/script.debug.js"></script>
 {% endif %}
 
 <!-- Structured Data - Organization -->

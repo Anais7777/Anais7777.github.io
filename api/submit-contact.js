@@ -60,7 +60,16 @@ module.exports = async (req, res) => {
     // Get form data
     const { name, _replyto, message } = req.body;
     const email = _replyto || req.body.email || '';
-    const timestamp = new Date().toISOString();
+    
+    // Format timestamp as readable date and time (e.g., "2025-12-15 15:13:19")
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    const timestamp = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 
     // First, try to get the sheet metadata to verify access and get sheet name
     let sheetName = 'Sheet1'; // Default sheet name
