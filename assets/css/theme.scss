@@ -249,6 +249,7 @@ img, img:hover {
 .blog-grid-item {  
     color: #333;
     padding: 0;
+    display: block !important; // Force block display - override any flex from Bootstrap or other sources
     min-width: 250px; // Set minimum width for all cards
     width: 100%; // Ensure all items take full width of their grid cell
     max-width: 100%; // Prevent items from exceeding grid cell width
@@ -346,8 +347,7 @@ img, img:hover {
         grid-column-end: 3;
         grid-row-start: 1;
         grid-row-end: 3;
-        flex-direction: column;  
-        align-items: flex-start;
+        // Removed flex-direction and align-items - not needed without display: flex
         font-size: 1em;
         padding:0;
         .card-title {
