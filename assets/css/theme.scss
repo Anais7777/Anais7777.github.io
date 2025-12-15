@@ -240,7 +240,7 @@ img, img:hover {
     width: auto;
     margin: 50px auto;
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(250px, 1fr));
     grid-auto-rows: 1fr;
     grid-gap: 30px;
     align-items: stretch;
@@ -249,9 +249,9 @@ img, img:hover {
 .blog-grid-item {  
     color: #333;
     padding: 0;
-    display: flex;
+    // display: flex; // Removed - conflicts with grid layout
     align-items: stretch;
-    min-width: 0; // Prevent grid items from overflowing
+    min-width: 250px; // Set minimum width for all cards
     width: 100%; // Ensure all items take full width of their grid cell
     max-width: 100%; // Prevent items from exceeding grid cell width
     box-sizing: border-box; // Include padding/border in width calculation
@@ -263,6 +263,7 @@ img, img:hover {
     .card {
         border:0;
         width: 100%;
+        min-width: 250px; // Set minimum width for cards
         max-width: 100%;
         display: flex;
         flex-direction: column;
@@ -277,6 +278,7 @@ img, img:hover {
     }
     .maxthumb {
         width: 100%;
+        min-width: 250px; // Set minimum width for image container
         max-width: 100%;
         overflow: hidden;
         display: block;
@@ -285,6 +287,7 @@ img, img:hover {
         a {
             display: block;
             width: 100%;
+            min-width: 250px; // Set minimum width for image link
             max-width: 100%;
         }
     }
@@ -332,7 +335,7 @@ img, img:hover {
         object-fit:cover;
         height:240px;
         width:100%;
-        min-width: 100%;
+        min-width: 250px; // Set minimum width for images
         max-width: 100%;
         display: block;
         object-position:top;
@@ -831,7 +834,7 @@ footer {
         padding-left:80px;
     }
     .blog-grid-container {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(2, minmax(250px, 1fr));
     }
     .newsletter img.newsletter-logo {
         max-height: 50px;
