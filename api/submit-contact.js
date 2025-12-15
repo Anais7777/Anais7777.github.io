@@ -61,7 +61,7 @@ module.exports = async (req, res) => {
     const { name, _replyto, message } = req.body;
     const email = _replyto || req.body.email || '';
     
-    // Format timestamp in Romanian format (e.g., "15 decembrie 2025")
+    // Format timestamp in Romanian format with time (e.g., "15 decembrie 2025 12:45")
     const now = new Date();
     const day = now.getDate();
     const monthNames = [
@@ -70,7 +70,9 @@ module.exports = async (req, res) => {
     ];
     const month = monthNames[now.getMonth()];
     const year = now.getFullYear();
-    const timestamp = `${day} ${month} ${year}`;
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const timestamp = `${day} ${month} ${year} ${hours}:${minutes}`;
 
     // First, try to get the sheet metadata to verify access and get sheet name
     let sheetName = 'Sheet1'; // Default sheet name

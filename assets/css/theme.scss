@@ -249,8 +249,6 @@ img, img:hover {
 .blog-grid-item {  
     color: #333;
     padding: 0;
-    // display: flex; // Removed - conflicts with grid layout
-    align-items: stretch;
     min-width: 250px; // Set minimum width for all cards
     width: 100%; // Ensure all items take full width of their grid cell
     max-width: 100%; // Prevent items from exceeding grid cell width
