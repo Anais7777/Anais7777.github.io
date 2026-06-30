@@ -28,7 +28,7 @@
 <meta property="og:url" content="{{ canonical_url }}">
 <meta property="og:title" content="{% if page.title %}{{ page.title }} | {{ site.name }}{% else %}{{ site.name }}{% endif %}">
 <meta property="og:description" content="{{ meta_description }}">
-<meta property="og:image" content="{% if page.image %}{{ site.url }}{{ site.baseurl }}/{{ page.image }}{% else %}{{ site.url }}{{ site.baseurl }}/{{ site.og_image }}{% endif %}">
+<meta property="og:image" content="{% if page.image %}{% include image-url.html image=page.image %}{% else %}{{ site.url }}{{ site.baseurl }}/{{ site.og_image }}{% endif %}">
 <meta property="og:site_name" content="{{ site.name }}">
 <meta property="og:locale" content="{{ site.locale | default: 'ro_MD' }}">
 {% if page.layout == 'post' %}
@@ -43,7 +43,7 @@
 <meta name="twitter:url" content="{{ canonical_url }}">
 <meta name="twitter:title" content="{% if page.title %}{{ page.title }} | {{ site.name }}{% else %}{{ site.name }}{% endif %}">
 <meta name="twitter:description" content="{{ meta_description }}">
-<meta name="twitter:image" content="{% if page.image %}{{ site.url }}{{ site.baseurl }}/{{ page.image }}{% else %}{{ site.url }}{{ site.baseurl }}/{{ site.og_image }}{% endif %}">
+<meta name="twitter:image" content="{% if page.image %}{% include image-url.html image=page.image %}{% else %}{{ site.url }}{{ site.baseurl }}/{{ site.og_image }}{% endif %}">
 {% if site.twitter.username %}<meta name="twitter:creator" content="@{{ site.twitter.username }}">{% endif %}
 
 <link rel="preload" href="https://fonts.googleapis.com/css?family=Sen:400,700&display=swap" as="style">
@@ -94,9 +94,9 @@
     <ul>
         <h3>Navigare</h3>
         <li class="menu-item"><a id="item" href="{{ site.baseurl }}/">Acasă</a></li>
-        <li class="menu-item"><a id="item" href="{{ site.baseurl }}/categories/">Destinații</a></li>
-        <li class="menu-item"><a id="item" href="{{ site.baseurl }}/about/">Despre</a></li>
-        <li class="menu-item"><a id="item" href="{{ site.baseurl }}/contact/">Contacte</a></li>       
+        <li class="menu-item"><a id="item" href="{{ site.baseurl }}/destinatii/">Destinații</a></li>
+        <li class="menu-item"><a id="item" href="{{ site.baseurl }}/despre/">Despre</a></li>
+        <li class="menu-item"><a id="item" href="{{ site.baseurl }}/contacte/">Contacte</a></li>       
     </ul>   
     {% include search-lunr.html %}
 
@@ -165,6 +165,8 @@
 ================================================== -->
 
 </div> <!-- /.site-content -->
+
+<div id="custom-cursor" class="custom-cursor is-hidden" aria-hidden="true"></div>
 
 <!-- Scripts (if you need bootstrap.js, please add it yourself. I didn't use it for performance reasons, it was not needed in this theme)
 ================================================== -->

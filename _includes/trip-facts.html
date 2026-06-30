@@ -1,0 +1,58 @@
+{% if page.trip and page.trip.durata %}
+<div class="trip-facts">
+    <h3 class="trip-facts-title">Rezumat</h3>
+    <dl class="trip-facts-grid">
+        <div class="trip-facts-item trip-facts-item--period">
+            <dt>Perioadă</dt>
+            <dd>
+                {% capture d1 %}{% include date-ro.html date=page.trip.plecare %}{% endcapture %}
+                {% assign plecare_key = page.trip.plecare | date: "%Y-%m-%d" %}
+                {% assign intoarcere_key = page.trip.intoarcere | date: "%Y-%m-%d" %}
+                {% assign single_day = false %}
+                {% if page.trip.intoarcere and plecare_key == intoarcere_key %}
+                    {% assign single_day = true %}
+                {% endif %}
+                <span class="trip-facts-period">
+                {% if single_day %}
+                {{ d1 | strip }}
+                {% else %}
+                {% if page.trip.plecare %}{{ d1 | strip }}{% endif %}
+                {% if page.trip.intoarcere %} - {% capture d2 %}{% include date-ro.html date=page.trip.intoarcere %}{% endcapture %}{{ d2 | strip }}{% endif %}
+                {% endif %}
+                </span>
+                {% if page.trip.durata and single_day == false %}
+                {% assign durataDisplay = page.trip.durata %}
+                {% if durataDisplay contains '0 nopți' %}
+                {% assign durataDisplay = durataDisplay | replace: '0 nopți și ', '' | replace: '0 nopți si ', '' %}
+                {% endif %}
+                <span class="trip-facts-meta">({{ durataDisplay }})</span>
+                {% endif %}
+            </dd>
+        </div>
+        {% if page.trip.persoane %}
+        <div class="trip-facts-item">
+            <dt>Persoane</dt>
+            <dd>{{ page.trip.persoane }}</dd>
+        </div>
+        {% endif %}
+        {% if page.trip.buget_actual %}
+        <div class="trip-facts-item">
+            <dt>Buget</dt>
+            <dd>{% include format-mdl.html value=page.trip.buget_actual %} MDL</dd>
+        </div>
+        {% endif %}
+        {% if page.trip.temperatura %}
+        <div class="trip-facts-item">
+            <dt>Temperatură</dt>
+            <dd>{{ page.trip.temperatura }}</dd>
+        </div>
+        {% endif %}
+        {% if page.trip.valuta %}
+        <div class="trip-facts-item">
+            <dt>Valută</dt>
+            <dd>{{ page.trip.valuta | currency_code }}</dd>
+        </div>
+        {% endif %}
+    </dl>
+</div>
+{% endif %}

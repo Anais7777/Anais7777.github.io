@@ -44,11 +44,11 @@ jekyll-archives:
     - categories
   layout: archive
   permalinks:
-    category: '/category/:name/'
+    category: '/categorie/:name/'
     
 # Pagination 
 paginate: 6
-paginate_path: /page:num/
+paginate_path: /pagina:num/
     
 # Other
 highlighter: none

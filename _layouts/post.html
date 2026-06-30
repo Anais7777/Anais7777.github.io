@@ -12,24 +12,27 @@ imageshadow: true
     <h1 class="posttitle">{{ page.title }}</h1>
     <!-- Author & Date  Box -->
     {% assign author = site.authors[page.author] %}
-    {% if page.author %}
     <div class="d-flex align-items-center mt-4">
+        {% if page.author %}
         <div>
             {% if author.avatar %}
             <img class="author-thumb" src="{{site.baseurl}}/{{ author.avatar }}" alt="{{ author.display_name }}">
             {% else %}
             <img class="author-thumb" src="https://www.gravatar.com/avatar/{{ author.gravatar }}?s=250&d=mm&r=x" alt="{{ author.display_name }}">
             {% endif %}
-        </div>            
+        </div>
         <div>
-        Written by {{ author.display_name }} on 
-        <span class="post-date"><time class="post-date" datetime="{{ page.date | date:"%Y-%m-%d" }}">{{ page.date | date_to_string }}</time></span>           
-        {% if page.last_modified_at %}
-        (Updated: <time datetime="{{ page.last_modified_at | date_to_xmlschema }}" itemprop="dateModified">{{ page.last_modified_at | date: "%b %-d, %Y" }}</time>)
+        Scris de {{ author.display_name }} ·
+        {% else %}
+        <div>
         {% endif %}
-        </div>            
+        {% capture page_date_ro %}{% include date-ro.html date=page.date %}{% endcapture %}
+        <span class="post-date"><time class="post-date" datetime="{{ page.date | date:"%Y-%m-%d" }}">{{ page_date_ro | strip }}</time></span>
+        {% if page.last_modified_at %}
+        (Actualizat: <time datetime="{{ page.last_modified_at | date_to_xmlschema }}" itemprop="dateModified">{% include date-ro.html date=page.last_modified_at %}</time>)
+        {% endif %}
+        </div>
     </div>
-    {% endif %}
 </div>
 
 <!-- Adsense under title if enabled from _config.yml (change your pub id and slot) -->
@@ -39,6 +42,9 @@ imageshadow: true
 
 <!-- Featured Image -->
 {% include featured-image.html %}
+
+<!-- Trip facts -->
+{% include trip-facts.html %}
 
 <!-- Content -->
 {% include article.html %}
@@ -69,7 +75,7 @@ imageshadow: true
   "@type": "BlogPosting",
   "headline": "{{ page.title | escape }}",
   "description": "{% if page.description %}{{ page.description | escape }}{% else %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 | escape }}{% endif %}",
-  "image": "{% if page.image %}{{ site.url }}{{ site.baseurl }}/{{ page.image }}{% else %}{{ site.url }}{{ site.baseurl }}/{{ site.og_image }}{% endif %}",
+  "image": "{% if page.image %}{% include image-url.html image=page.image %}{% else %}{{ site.url }}{{ site.baseurl }}/{{ site.og_image }}{% endif %}",
   "datePublished": "{{ page.date | date_to_xmlschema }}",
   "dateModified": "{% if page.last_modified_at %}{{ page.last_modified_at | date_to_xmlschema }}{% else %}{{ page.date | date_to_xmlschema }}{% endif %}",
   "author": {
@@ -116,7 +122,7 @@ imageshadow: true
       "@type": "ListItem",
       "position": 2,
       "name": "{{ page.categories.first }}",
-      "item": "{{ site.url }}{{ site.baseurl }}/category/{{ page.categories.first | downcase }}/"
+      "item": "{{ site.url }}{{ site.baseurl }}/categorie/{{ page.categories.first | slugify }}/"
     }{% endif %},
     {
       "@type": "ListItem",

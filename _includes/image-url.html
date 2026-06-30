@@ -1,0 +1,5 @@
+{% if include.image contains "://" %}
+{{ include.image }}
+{% else %}
+{{ site.url }}{{ site.baseurl }}/{{ include.image }}
+{% endif %}

@@ -6,31 +6,77 @@
     <h2 class="text-center mb-4">Explore more like this</h2>
     {% endunless %}
     
-    <div class="d-flex justify-content-center align-items-center">
-    
-    <!-- Categories -->
-    {% assign sortedCategories = page.categories | sort %}
-    {% for category in sortedCategories %}
-    <a class="smoothscroll badge badge-primary text-capitalize" href="{{site.baseurl}}/categories#{{ category | replace: " ","-" }}">{{ category }}</a>                
+    {% assign primaryCategory = page.categories | first %}
+    {% assign categoryPostCount = 0 %}
+    {% for p in site.posts %}
+        {% if p.categories contains primaryCategory %}
+            {% assign categoryPostCount = categoryPostCount | plus: 1 %}
+        {% endif %}
     {% endfor %}
 
-    <!-- Tags -->  
+    {% assign suggestOtherCountries = false %}
+    {% if categoryPostCount < 2 %}
+        {% assign suggestOtherCountries = true %}
+    {% endif %}
+
+    {% if suggestOtherCountries %}
+        {% assign otherCountriesStr = "" %}
+        {% for p in site.posts %}
+            {% for category in p.categories %}
+                {% unless page.categories contains category %}
+                    {% assign catMark = category | append: "||" %}
+                    {% unless otherCountriesStr contains catMark %}
+                        {% assign otherCountriesStr = otherCountriesStr | append: catMark %}
+                    {% endunless %}
+                {% endunless %}
+            {% endfor %}
+        {% endfor %}
+        {% assign otherCountries = otherCountriesStr | split: "||" | sort %}
+    {% endif %}
+
+    <div class="d-flex justify-content-center align-items-center flex-wrap">
+    {% if suggestOtherCountries %}
+        {% assign badgesShown = 0 %}
+        {% for category in otherCountries %}
+            {% if category != "" and badgesShown < 3 %}
+            <a class="smoothscroll badge badge-primary text-capitalize" href="{{ site.baseurl }}/destinatii#{{ category | replace: " ","-" }}">{{ category }}</a>
+            {% assign badgesShown = badgesShown | plus: 1 %}
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        {% assign sortedCategories = page.categories | sort %}
+        {% for category in sortedCategories %}
+        <a class="smoothscroll badge badge-primary text-capitalize" href="{{ site.baseurl }}/destinatii#{{ category | replace: " ","-" }}">{{ category }}</a>                
+        {% endfor %}
+    {% endif %}
+
     {% assign sortedTags = page.tags | sort %}
     {% for tag in sortedTags %}                
-    <a class="smoothscroll badge badge-primary text-capitalize" href="{{site.baseurl}}/tags#{{ tag | replace: " ","-" }}">{{ tag }}</a>               
+    <a class="smoothscroll badge badge-primary text-capitalize" href="{{ site.baseurl }}/etichete#{{ tag | replace: " ","-" }}">{{ tag }}</a>               
     {% endfor %}
-
     </div>
 
-    {% assign maxRelated = 3 %}
-    {% assign minCommonTags =  1 %}
-    {% assign maxRelatedCounter = 0 %}
     <div class="blog-grid-container">
+    {% if suggestOtherCountries %}
+        {% assign relatedShown = 0 %}
+        {% for category in otherCountries %}
+            {% if category != "" and relatedShown < 3 %}
+            {% for post in site.posts %}
+                {% if post.url != page.url and post.categories contains category %}
+                    {% include postbox.html %}
+                    {% assign relatedShown = relatedShown | plus: 1 %}
+                    {% break %}
+                {% endif %}
+            {% endfor %}
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        {% assign maxRelated = 3 %}
+        {% assign minCommonTags = 1 %}
+        {% assign maxRelatedCounter = 0 %}
         {% for post in site.posts %}
-        
             {% assign sameTagCount = 0 %}
             {% assign commonTags = '' %}
-        
             {% for category in post.categories %}
             {% if post.url != page.url %}
                 {% if page.categories contains category %}
@@ -40,7 +86,6 @@
                 {% endif %}
             {% endif %}
             {% endfor %}
-        
             {% if sameTagCount >= minCommonTags %}
             {% include postbox.html %}
             {% assign maxRelatedCounter = maxRelatedCounter | plus: 1 %}
@@ -48,7 +93,7 @@
                 {% break %}
             {% endif %}
             {% endif %}
-        
         {% endfor %}
-        </div>        
+    {% endif %}
+    </div>        
 </div>

@@ -1,16 +1,17 @@
 ---
 layout: default
-title: Archive
+title: Arhivă
 ---
 
 <!-- Begin List Posts
 ================================================== -->
 
-<h1>Archive of posts with <span>{{ page.type }} '{{ page.title }}'</span></h1>
+<h1>Arhivă pentru <span>{{ page.type }} „{{ page.title }}”</span></h1>
 
 <div class="blog-grid-container">
 
-{% for post in page.posts %}
+{% assign sorted_posts = page.posts | sort: 'title' %}
+{% for post in sorted_posts %}
 
 {% include postbox.html %}
 

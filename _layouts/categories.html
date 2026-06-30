@@ -6,10 +6,11 @@ layout: default
 <div class="main-content">
     <h1 class="posttitle mb-4">Destinații</h1>
     
-{% for category in site.categories %}
+{% assign sorted_categories = site.categories | sort %}
+{% for category in sorted_categories %}
 <h4 class="mt-5 mb-neg-30" id="{{ category[0] | replace: " ","-" }}"><span class="text-capitalize badge badge-primary text-small">{{ category[0] }}</span></h4>
 <div class="blog-grid-container">
-{% assign pages_list = category[1] %}
+{% assign pages_list = category[1] | sort: 'title' %}
 {% for post in pages_list %}
 {% if post.title != null %}
 {% if group == null or group == post.group %}

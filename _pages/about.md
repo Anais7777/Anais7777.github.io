@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Scriu cu tolk pentru voi 
-permalink: /about/
+permalink: /despre/
 comments: false
 image: assets/images/skiathos.webp
 imageshadow: true

@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Contacte
-permalink: /contact/
+permalink: /contacte/
 comments: false
 ---
 

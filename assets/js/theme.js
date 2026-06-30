@@ -1,33 +1,39 @@
 jQuery(document).ready(function($){
 
-    // Smooth on external page
-    $(function() {
-      setTimeout(function() {
+    // Smooth scroll — getElementById (jQuery #id fails with diacritics e.g. călătorie)
+    $(function () {
+      function smoothScrollToHash(hash) {
+        if (!hash || hash === '#') {
+          return false;
+        }
+        var id = decodeURIComponent(hash.replace(/^#/, ''));
+        var el = document.getElementById(id);
+        if (!el) {
+          return false;
+        }
+        $('html, body').animate({
+          scrollTop: $(el).offset().top
+        }, 1000);
+        return true;
+      }
+
+      setTimeout(function () {
         if (location.hash) {
-          /* we need to scroll to the top of the window first, because the browser will always jump to the anchor first before JavaScript is ready, thanks Stack Overflow: http://stackoverflow.com/a/3659116 */
           window.scrollTo(0, 0);
-          target = location.hash.split('#');
-          smoothScrollTo($('#'+target[1]));
+          smoothScrollToHash(location.hash);
         }
       }, 1);
 
-      // taken from: https://css-tricks.com/snippets/jquery/smooth-scrolling/
-      $('a[href*=\\#]:not([href=\\#])').click(function() {
-        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-          smoothScrollTo($(this.hash));
-          return false;
+      $('a[href*="#"]:not([href="#"])').click(function () {
+        if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') && location.hostname === this.hostname) {
+          if (smoothScrollToHash(this.hash)) {
+            if (history.pushState) {
+              history.pushState(null, null, this.hash);
+            }
+            return false;
+          }
         }
       });
-
-      function smoothScrollTo(target) {
-        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-
-        if (target.length) {
-          $('html,body').animate({
-            scrollTop: target.offset().top
-          }, 1000);
-        }
-      }
     });
 	
 	
@@ -181,4 +187,37 @@ $(document).ready(function(){
     });
 
 
+});
+
+// Custom cursor — cerc cu stroke #42d0ff, fill la hover
+$(document).ready(function () {
+	if (!window.matchMedia('(pointer: fine)').matches) {
+		return;
+	}
+
+	var cursor = document.getElementById('custom-cursor');
+	if (!cursor) {
+		return;
+	}
+
+	var hoverSelector = 'a, button, input, textarea, select, label, .nav-icon, .badge, .post-card, .show-search, [href], [role="button"]';
+
+	document.documentElement.classList.add('custom-cursor-enabled');
+
+	document.addEventListener('mousemove', function (e) {
+		cursor.style.left = e.clientX + 'px';
+		cursor.style.top = e.clientY + 'px';
+		cursor.classList.remove('is-hidden');
+
+		var target = document.elementFromPoint(e.clientX, e.clientY);
+		if (target && target.closest(hoverSelector)) {
+			cursor.classList.add('is-hover');
+		} else {
+			cursor.classList.remove('is-hover');
+		}
+	}, { passive: true });
+
+	document.documentElement.addEventListener('mouseleave', function () {
+		cursor.classList.add('is-hidden');
+	});
 });
