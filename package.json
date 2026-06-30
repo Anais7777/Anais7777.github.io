@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Un plan al viitoarei tale călătorii",
   "scripts": {
-    "build": "jekyll build",
-    "serve": "jekyll serve"
+    "build": "bundle exec jekyll build",
+    "serve": "bundle exec jekyll serve"
   },
   "dependencies": {
     "@vercel/analytics": "^1.6.1",

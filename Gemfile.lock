@@ -9,7 +9,7 @@ GEM
       popper_js (>= 2.11.8, < 3)
     colorator (1.1.0)
     concurrent-ruby (1.3.6)
-    csv (3.2.6)
+    csv (3.3.5)
     em-websocket (0.5.3)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0)
@@ -95,6 +95,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap (~> 5.3)
+  csv (>= 3.2.8)
   jekyll (~> 4.4.1)
   jekyll-archives
   jekyll-feed
@@ -113,7 +114,7 @@ CHECKSUMS
   bootstrap (5.3.5) sha256=d57c9b7a21eaf2182c32fe93d1c0eaa0e1ebe82c46676c5a1fd66dd3a6ac41f8
   colorator (1.1.0) sha256=e2f85daf57af47d740db2a32191d1bdfb0f6503a0dfbc8327d0c9154d5ddfc38
   concurrent-ruby (1.3.6) sha256=6b56837e1e7e5292f9864f34b69c5a2cbc75c0cf5338f1ce9903d10fa762d5ab
-  csv (3.2.6) sha256=dcf8c9db350d1f883d316d0f2f37020d733f1bf668dd03652370c489302bae50
+  csv (3.3.5) sha256=6e5134ac3383ef728b7f02725d9872934f523cb40b961479f69cf3afa6c8e73f
   em-websocket (0.5.3) sha256=f56a92bde4e6cb879256d58ee31f124181f68f8887bd14d53d5d9a292758c6a8
   eventmachine (1.2.7) sha256=994016e42aa041477ba9cff45cbe50de2047f25dd418eba003e84f0d16560972
   ffi (1.17.2-x64-mingw-ucrt) sha256=15d2da54ee578657a333a6059ed16eaba1cbd794ceecd15944825b65c8381ac0
