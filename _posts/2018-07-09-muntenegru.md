@@ -3,7 +3,7 @@ layout: post
 title: "Muntenegru"
 categories: [ Muntenegru ]
 date: 2018-07-09
-image: assets/images/muntenegru.webp
+image: assets/images/Muntenegru/muntenegru.webp
 toc: true
 beforetoc: "Cuprins"
 ---

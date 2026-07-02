@@ -5,28 +5,20 @@
 {% assign raw = include.value | plus: 0.0 %}
 {% assign dec_count = include.decimals | default: 0 | plus: 0 %}
 {% if dec_count > 0 %}
-{% assign factor = 1.0 %}
+{% assign factor = 1 %}
 {% for i in (1..dec_count) %}{% assign factor = factor | times: 10 %}{% endfor %}
 {% assign scaled = raw | times: factor | round %}
-{% assign whole = scaled | divided_by: factor %}
-{% assign frac = scaled | modulo: factor %}
-{% if frac < 10 and dec_count >= 2 %}
-{% capture frac_str %}0{{ frac }}{% endcapture %}
-{% elsif frac < 100 and dec_count >= 3 %}
-{% capture frac_str %}0{{ frac }}{% endcapture %}
-{% else %}
-{% assign frac_str = frac %}
-{% endif %}
-{% assign n = whole %}
+{% assign n = scaled | divided_by: factor | plus: 0 %}
+{% assign frac = scaled | modulo: factor | plus: 0 %}
 {% else %}
 {% assign n = raw | round %}
-{% assign frac_str = '' %}
+{% assign frac = -1 %}
 {% endif %}
 {% if n < 1000 %}
 {% assign formatted = n %}
 {% elsif n < 1000000 %}
-{% assign thousands = n | divided_by: 1000 %}
-{% assign remainder = n | modulo: 1000 %}
+{% assign thousands = n | divided_by: 1000 | plus: 0 %}
+{% assign remainder = n | modulo: 1000 | plus: 0 %}
 {% if remainder < 10 %}
 {% capture remainder_str %}00{{ remainder }}{% endcapture %}
 {% elsif remainder < 100 %}
@@ -36,13 +28,19 @@
 {% endif %}
 {% assign formatted = thousands | append: ' ' | append: remainder_str %}
 {% else %}
-{% assign millions = n | divided_by: 1000000 %}
-{% assign rest = n | modulo: 1000000 %}
+{% assign millions = n | divided_by: 1000000 | plus: 0 %}
+{% assign rest = n | modulo: 1000000 | plus: 0 %}
 {% capture rest_fmt %}{% include format-mdl.html value=rest %}{% endcapture %}
 {% assign formatted = millions | append: ' ' | append: rest_fmt | strip %}
 {% endif %}
-{% if dec_count > 0 and frac_str != '' %}
-{{ formatted }},{{ frac_str }}
+{% if dec_count > 0 and frac > 0 %}
+{% if dec_count == 1 %}
+{{ formatted }},{{ frac }}
+{% elsif frac < 10 %}
+{{ formatted }},0{{ frac }}
+{% else %}
+{{ formatted }},{{ frac }}
+{% endif %}
 {% else %}
 {{ formatted }}
 {% endif %}

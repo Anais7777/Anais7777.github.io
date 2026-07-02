@@ -6,8 +6,9 @@
     <span>&laquo; </span>
   {% endif %}
 
-  {% assign from = paginator.page | minus: 3 | at_least: 1 %}
-  {% assign to = from | plus: 3 | at_most: paginator.total_pages %}
+  {% assign from = paginator.page | minus: 2 | at_least: 1 %}
+  {% assign to = from | plus: 4 | at_most: paginator.total_pages %}
+  {% assign from = to | minus: 4 | at_least: 1 %}
 
   {% for page in (from..to) %}
     {% if page == paginator.page %}

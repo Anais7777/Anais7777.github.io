@@ -3,7 +3,7 @@ layout: page
 title: Scriu cu tolk pentru voi 
 permalink: /despre/
 comments: false
-image: assets/images/skiathos.webp
+image: assets/images/Skiathos/skiathos.webp
 imageshadow: true
 ---
 

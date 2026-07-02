@@ -2,12 +2,12 @@
   Usage: {% include format-mdl.html value=page.trip.buget_actual %}
   Output: 37 265
 {% endcomment %}
-{% assign n = include.value | plus: 0 | round %}
+{% assign n = include.value | plus: 0.0 | round %}
 {% if n < 1000 %}
 {{ n }}
 {% elsif n < 1000000 %}
-{% assign thousands = n | divided_by: 1000 %}
-{% assign remainder = n | modulo: 1000 %}
+{% assign thousands = n | divided_by: 1000 | plus: 0 %}
+{% assign remainder = n | modulo: 1000 | plus: 0 %}
 {% if remainder < 10 %}
 {% capture remainder_str %}00{{ remainder }}{% endcapture %}
 {% elsif remainder < 100 %}
@@ -17,8 +17,8 @@
 {% endif %}
 {{ thousands }} {{ remainder_str }}
 {% else %}
-{% assign millions = n | divided_by: 1000000 %}
-{% assign rest = n | modulo: 1000000 %}
+{% assign millions = n | divided_by: 1000000 | plus: 0 %}
+{% assign rest = n | modulo: 1000000 | plus: 0 %}
 {% capture rest_fmt %}{% include format-mdl.html value=rest %}{% endcapture %}
 {{ millions }} {{ rest_fmt | strip }}
 {% endif %}

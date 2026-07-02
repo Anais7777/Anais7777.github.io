@@ -1,17 +1,22 @@
 <!-- begin post -->
 {% assign author = site.authors[post.author] %}
 {% assign thumb_pos = post.thumb_position | default: site.data.thumb_positions[post.slug] | default: 'center' %}
+{% assign thumb_fit = post.card_fit | default: site.data.thumb_fit[post.slug] | default: 'cover' %}
+{% if include.featured_card %}
+{% assign card_image_url = post.image %}
+{% else %}
 {% include card-image-url.html %}
+{% endif %}
 
 <div class="blog-grid-item">
     <div class="card h-100 post-card">
-        <div class="maxthumb">
+        <div class="maxthumb{% if thumb_fit == 'contain' %} maxthumb--contain{% endif %}">
             {% if post.image %}
 
                 {% if site.lazyimages == "enabled" %}
-                    <img class="img-thumb{% unless thumb_pos == 'center' %} img-thumb--{{ thumb_pos }}{% endunless %} lazyimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAQAAAA3fa6RAAAADklEQVR42mNkAANGCAUAACMAA2w/AMgAAAAASUVORK5CYII=" data-src="{% if card_image_url contains "://" %}{{ card_image_url }}{% else %}{{ site.baseurl }}{{ card_image_url | prepend: "/" }}{% endif %}" alt="{{ post.title }}">
+                    <img class="img-thumb{% if thumb_fit == 'contain' %} img-thumb--contain{% elsif thumb_pos != 'center' %} img-thumb--{{ thumb_pos }}{% endif %} lazyimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAQAAAA3fa6RAAAADklEQVR42mNkAANGCAUAACMAA2w/AMgAAAAASUVORK5CYII=" data-src="{% if card_image_url contains "://" %}{{ card_image_url }}{% else %}{{ site.baseurl }}{{ card_image_url | prepend: "/" }}{% endif %}" alt="{{ post.title }}">
                 {% else %}
-                    <img class="img-thumb{% unless thumb_pos == 'center' %} img-thumb--{{ thumb_pos }}{% endunless %}" src="{% if card_image_url contains "://" %}{{ card_image_url }}{% else %}{{ site.baseurl }}{{ card_image_url | prepend: "/" }}{% endif %}" alt="{{ post.title }}"> 
+                    <img class="img-thumb{% if thumb_fit == 'contain' %} img-thumb--contain{% elsif thumb_pos != 'center' %} img-thumb--{{ thumb_pos }}{% endif %}" src="{% if card_image_url contains "://" %}{{ card_image_url }}{% else %}{{ site.baseurl }}{{ card_image_url | prepend: "/" }}{% endif %}" alt="{{ post.title }}">
                 {% endif %}
 
             {% endif %}

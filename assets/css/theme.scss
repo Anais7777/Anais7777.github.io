@@ -403,6 +403,13 @@ img, img:hover {
         display: block;
         flex-shrink: 0;
         box-sizing: border-box;
+        &--contain {
+            background: #f5f5f5;
+            display: block;
+            overflow: visible;
+            min-height: 0;
+            height: auto;
+        }
     }
     .card-body {
         display: flex;
@@ -428,6 +435,7 @@ img, img:hover {
         font-size:14px;
         border-top:0;
         padding: 1rem 1.25rem;
+        margin-top: auto;
         a {
             color:inherit;
             font-weight:700;
@@ -440,6 +448,7 @@ img, img:hover {
     .post-date {
         float:right;
         margin-top: 10px;
+        font-weight: 600;
     }
     .img-thumb {
         object-fit:cover;
@@ -460,8 +469,25 @@ img, img:hover {
         &--center-right {
             object-position: center right;
         }
+        &--contain {
+            object-fit: unset;
+            height: auto !important;
+            max-height: none;
+            width: 100%;
+            min-width: 0;
+        }
     }
 }
+
+.blog-grid-item .maxthumb--contain .img-thumb,
+.blog-grid-item .img-thumb.img-thumb--contain {
+    object-fit: unset;
+    height: auto !important;
+    max-height: none;
+    width: 100%;
+    min-width: 0;
+}
+
 .firstpage {
     .blog-grid-item:nth-child(1) {
         grid-column-start: 1;
@@ -890,6 +916,23 @@ figcaption {
 
     .toc .toc-title {
         margin-top: 0;
+    }
+
+    .toc ul,
+    .toc ol {
+        list-style: none;
+        padding-left: 0;
+        margin: 0;
+    }
+
+    .toc li {
+        margin-bottom: 0.35rem;
+    }
+
+    .toc li > ul,
+    .toc li > ol {
+        padding-left: 1.5rem;
+        margin-top: 0.35rem;
     }
 
     p {

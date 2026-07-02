@@ -1,4 +1,5 @@
-# Poziționare a imaginii pe card (object-position: top | center | bottom | center-right)
+# Poziționare CSS pe card (object-position: top | center | bottom | center-right)
+# Crop la generare -card.webp: _data/thumb_crops.yml (implicit center)
 viena: bottom
 barcelona: center-right
 praga: bottom
@@ -7,4 +8,4 @@ dresda: bottom
 napoli: bottom
 verona: bottom
 varsovia: top
-skiathos: center
+skiathos: top

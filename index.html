@@ -39,7 +39,13 @@ description: "Ghiduri de călătorie detaliate pentru destinații populare. Sfat
 ================================================== -->
 <div class="blog-grid-container">
     {% for post in paginator.posts %}
-        {% include postbox.html %}
+        {% assign hero_card = false %}
+        {% if forloop.first %}
+            {% if paginator.page == nil or paginator.page == 1 %}
+                {% assign hero_card = true %}
+            {% endif %}
+        {% endif %}
+        {% include postbox.html featured_card=hero_card %}
     {% endfor %}
 </div>
 

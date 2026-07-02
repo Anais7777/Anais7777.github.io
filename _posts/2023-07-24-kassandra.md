@@ -3,7 +3,7 @@ layout: post
 title: "Kassandra"
 categories: [ Grecia ]
 date: 2023-07-24
-image: assets/images/sithonia.webp
+image: assets/images/Kassandra/kassandra.jpg
 toc: true
 beforetoc: "Cuprins"
 trip:

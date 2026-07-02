@@ -1,10 +1,12 @@
 {% comment %}
-  Setează card_image_url — thumbnail optimizat pentru card, imaginea full pe pagina postului.
+  Carduri mici: mereu assets/images/Folder/nume-card.webp din același folder ca post.image.
+  Cardul principal (homepage) folosește post.image direct via featured_card în postbox.html.
 {% endcomment %}
 {% assign card_image_url = post.image %}
+{% assign thumb_fit = post.card_fit | default: site.data.thumb_fit[post.slug] | default: 'cover' %}
 {% if post.card_image %}
   {% assign card_image_url = post.card_image %}
-{% elsif post.image and post.image contains "assets/images/" %}
-  {% assign card_image_stem = post.image | replace: '.jpg', '' | replace: '.jpeg', '' | replace: '.webp', '' | replace: '.png', '' %}
+{% elsif thumb_fit != 'contain' and post.image and post.image contains "assets/images/" %}
+  {% assign card_image_stem = post.image | replace: '.jpeg', '' | replace: '.jpg', '' | replace: '.webp', '' | replace: '.png', '' %}
   {% assign card_image_url = card_image_stem | append: '-card.webp' %}
 {% endif %}
