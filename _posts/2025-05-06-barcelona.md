@@ -3,7 +3,7 @@ layout: post
 title: "Barcelona"
 categories: [ Spania ]
 date: 2025-05-06
-image: https://images.unsplash.com/photo-1583422409516-2895a77efded?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+image: assets/images/Barcelona/barcelona.jpg
 toc: true
 beforetoc: "Cuprins"
 trip:
@@ -14,6 +14,7 @@ trip:
   temperatura: +20°C
   valuta: EUR
   buget_actual: 64300.65
+  buget_locala: 3240
   cazare: 32225.5
   cheltuieli_masina: 2262.0
   bilete_avion: 11382.01
@@ -30,20 +31,15 @@ Am stat la [Feelathome Poblenou Beach Apartments](https://www.booking.com/hotel/
 
 ## Buget
 
-**Detalii cheltuieli:**
-- Cazare: 32 226 MDL
-- Bilete avion: 11 382 MDL
-- Cheltuieli mașină: 2 262 MDL
-- Transport intern: 1 003 MDL
-- Bilete locații: 4 723 MDL
-- Restaurante: 1 500 MDL
-- Alimente: 3 244 MDL
-- Cumpărături: 7 847 MDL
+Barcelona, 4 persoane, 6 zile: **3 240 EUR** (64 301 MDL) - cazarea și obiectivele au dominat bugetul.
 
-## Trip cu mașina
-Cheltuieli mașină (din Excel): **2 262 MDL**.
+Cazare Feelathome Poblenou **1 493,96 EUR** (29 500 MDL) plus taxă oraș **138 EUR** (2 726 MDL). Zbor **586,75 EUR** (11 382 MDL). Drum cu mașina: benzină Iași **25,40 EUR** (500 MDL), parcare aeroport **89,53 EUR** (1 762 MDL).
 
-*Urmează să completez cu povestea mea.*
+Obiective: Sagrada Família **112 EUR** (2 204 MDL, 4×28 EUR), Tibidabo **54 EUR** + ascensor **20 EUR**, Aquarium **54 EUR** (2×27 EUR).
+
+Transport local: tichete TMB **5,30 EUR** și carduri Family 8 călătorii (~**12 EUR** fiecare).
+
+La masă: Restaurant Colom **70,20 EUR** (1 382 MDL), tacos **6 EUR**, La Boqueria (**7-10 EUR** pe cumpărături), churros **7 EUR**. Magazine alimentare ~**130 EUR**. Cumpărături Zara, duty free, ciocolată ~**520 EUR**.
 
 ## Jurnal de călătorie
 

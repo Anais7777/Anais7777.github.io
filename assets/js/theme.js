@@ -1,5 +1,120 @@
 jQuery(document).ready(function($){
 
+    var applyCountryFilter;
+
+    // Country filter on Destinații page
+    (function initCountryFilter() {
+        var $dropdown = $('#country-filter');
+        if (!$dropdown.length) {
+            return;
+        }
+
+        var $toggle = $dropdown.find('.country-dropdown__toggle');
+        var $value = $dropdown.find('.country-dropdown__value');
+        var $menu = $dropdown.find('.country-dropdown__menu');
+        var $options = $dropdown.find('.country-dropdown__option');
+
+        function findOption(countryId) {
+            return $options.filter(function () {
+                return $(this).attr('data-value') === countryId;
+            });
+        }
+
+        function optionExists(countryId) {
+            return findOption(countryId).length > 0;
+        }
+
+        function setSelectedUI(countryId) {
+            var $selected = findOption(countryId);
+            if (!$selected.length) {
+                return;
+            }
+            $options.removeClass('is-selected').attr('aria-selected', 'false');
+            $selected.addClass('is-selected').attr('aria-selected', 'true');
+            $value.text($selected.text());
+        }
+
+        function closeMenu() {
+            $dropdown.removeClass('is-open');
+            $toggle.attr('aria-expanded', 'false');
+            $menu.prop('hidden', true);
+        }
+
+        function openMenu() {
+            $dropdown.addClass('is-open');
+            $toggle.attr('aria-expanded', 'true');
+            $menu.prop('hidden', false);
+        }
+
+        applyCountryFilter = function (countryId, scrollTo) {
+            var $sections = $('.destination-section');
+
+            if (!countryId) {
+                $sections.removeClass('destination-section--hidden');
+            } else {
+                $sections.each(function () {
+                    var $section = $(this);
+                    $section.toggleClass('destination-section--hidden', $section.data('country-id') !== countryId);
+                });
+            }
+
+            setSelectedUI(countryId);
+            closeMenu();
+
+            if (countryId && scrollTo) {
+                var el = document.getElementById(countryId);
+                if (el) {
+                    $('html, body').animate({ scrollTop: $(el).offset().top }, 600);
+                }
+            }
+
+            if (history.replaceState) {
+                history.replaceState(null, null, countryId ? '#' + countryId : window.location.pathname);
+            }
+        };
+
+        $toggle.on('click', function () {
+            if ($dropdown.hasClass('is-open')) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        });
+
+        $options.on('click', function () {
+            var countryId = $(this).attr('data-value');
+            applyCountryFilter(countryId, !!countryId);
+        });
+
+        $dropdown.on('click', function (e) {
+            e.stopPropagation();
+        });
+
+        $(document).on('click.countryFilter', function () {
+            closeMenu();
+        });
+
+        $(document).on('keydown.countryFilter', function (e) {
+            if (e.key === 'Escape') {
+                closeMenu();
+            }
+        });
+
+        $(window).on('hashchange', function () {
+            var hash = decodeURIComponent(location.hash.replace(/^#/, ''));
+            if (hash && optionExists(hash)) {
+                applyCountryFilter(hash, false);
+            } else if (!hash) {
+                applyCountryFilter('', false);
+            }
+        });
+
+        var initialHash = decodeURIComponent(location.hash.replace(/^#/, ''));
+        if (initialHash && optionExists(initialHash)) {
+            applyCountryFilter(initialHash, false);
+        }
+    })();
+
     // Smooth scroll — getElementById (jQuery #id fails with diacritics e.g. călătorie)
     $(function () {
       function smoothScrollToHash(hash) {
@@ -29,6 +144,15 @@ jQuery(document).ready(function($){
           if (smoothScrollToHash(this.hash)) {
             if (history.pushState) {
               history.pushState(null, null, this.hash);
+            }
+            var $countryFilter = $('#country-filter');
+            if ($countryFilter.length && this.hash) {
+              var countryId = decodeURIComponent(this.hash.replace(/^#/, ''));
+              if ($countryFilter.find('.country-dropdown__option[data-value="' + countryId + '"]').length) {
+                if (applyCountryFilter) {
+                  applyCountryFilter(countryId, false);
+                }
+              }
             }
             return false;
           }
@@ -200,7 +324,7 @@ $(document).ready(function () {
 		return;
 	}
 
-	var hoverSelector = 'a, button, input, textarea, select, label, .nav-icon, .badge, .post-card, .show-search, [href], [role="button"]';
+	var hoverSelector = 'a, button, input, textarea, select, label, .nav-icon, .badge, .post-card, .show-search, .country-dropdown__toggle, .country-dropdown__option, [href], [role="button"]';
 
 	document.documentElement.classList.add('custom-cursor-enabled');
 

@@ -38,7 +38,21 @@
         {% if page.trip.buget_actual %}
         <div class="trip-facts-item">
             <dt>Buget</dt>
-            <dd>{% include format-mdl.html value=page.trip.buget_actual %} MDL</dd>
+            <dd class="trip-facts-budget">
+                {% if page.trip.buget_locala %}
+                <span class="trip-facts-budget-local">
+                    {% assign local_decimals = 0 %}
+                    {% assign val = page.trip.valuta | currency_code %}
+                    {% if val == 'EUR' or val == 'PLN' or val == 'RON' or val == 'TRY' %}
+                    {% assign local_decimals = 2 %}
+                    {% endif %}
+                    {% capture local_amount %}{% include format-local.html value=page.trip.buget_locala decimals=local_decimals %}{% endcapture %}{{ local_amount | strip_newlines | strip }}
+                    {{ val }}
+                </span>
+                <span class="trip-facts-budget-sep">·</span>
+                {% endif %}
+                <span class="trip-facts-budget-mdl">{% include format-mdl.html value=page.trip.buget_actual %} MDL</span>
+            </dd>
         </div>
         {% endif %}
         {% if page.trip.temperatura %}

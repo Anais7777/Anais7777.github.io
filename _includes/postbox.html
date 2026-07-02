@@ -1,5 +1,7 @@
 <!-- begin post -->
 {% assign author = site.authors[post.author] %}
+{% assign thumb_pos = post.thumb_position | default: site.data.thumb_positions[post.slug] | default: 'center' %}
+{% include card-image-url.html %}
 
 <div class="blog-grid-item">
     <div class="card h-100 post-card">
@@ -7,9 +9,9 @@
             {% if post.image %}
 
                 {% if site.lazyimages == "enabled" %}
-                    <img class="img-thumb lazyimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAQAAAA3fa6RAAAADklEQVR42mNkAANGCAUAACMAA2w/AMgAAAAASUVORK5CYII=" data-src="{% if post.image contains "://" %}{{ post.image }}{% else %}{{ site.baseurl }}{{ post.image | prepend: "/" }}{% endif %}" alt="{{ post.title }}">
+                    <img class="img-thumb{% unless thumb_pos == 'center' %} img-thumb--{{ thumb_pos }}{% endunless %} lazyimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAQAAAA3fa6RAAAADklEQVR42mNkAANGCAUAACMAA2w/AMgAAAAASUVORK5CYII=" data-src="{% if card_image_url contains "://" %}{{ card_image_url }}{% else %}{{ site.baseurl }}{{ card_image_url | prepend: "/" }}{% endif %}" alt="{{ post.title }}">
                 {% else %}
-                    <img class="img-thumb" src="{% if post.image contains "://" %}{{ post.image }}{% else %}{{ site.baseurl }}{{ post.image | prepend: "/" }}{% endif %}" alt="{{ post.title }}"> 
+                    <img class="img-thumb{% unless thumb_pos == 'center' %} img-thumb--{{ thumb_pos }}{% endunless %}" src="{% if card_image_url contains "://" %}{{ card_image_url }}{% else %}{{ site.baseurl }}{{ card_image_url | prepend: "/" }}{% endif %}" alt="{{ post.title }}"> 
                 {% endif %}
 
             {% endif %}

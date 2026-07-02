@@ -4,10 +4,28 @@ layout: default
 ---
 
 <div class="main-content">
-    <h1 class="posttitle mb-4">Destinații</h1>
-    
 {% assign sorted_categories = site.categories | sort %}
+
+<div class="destinations-header d-flex justify-content-between align-items-center flex-wrap">
+    <h1 class="posttitle mb-0">Destinații ({{ site.posts.size }})</h1>
+    <div class="destinations-filter">
+        <div class="country-dropdown" id="country-filter">
+            <button type="button" class="country-dropdown__toggle" aria-haspopup="listbox" aria-expanded="false" aria-label="Filtrează după țară">
+                <span class="country-dropdown__value">Toate țările</span>
+                <svg class="country-dropdown__icon" width="12" height="8" viewBox="0 0 12 8" aria-hidden="true"><path fill="currentColor" d="M6 8L0 0h12z"/></svg>
+            </button>
+            <ul class="country-dropdown__menu" role="listbox" hidden>
+                <li class="country-dropdown__option is-selected" role="option" data-value="" aria-selected="true" tabindex="-1">Toate țările</li>
+                {% for category in sorted_categories %}
+                <li class="country-dropdown__option" role="option" data-value="{{ category[0] | replace: ' ', '-' }}" aria-selected="false" tabindex="-1">{{ category[0] }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
 {% for category in sorted_categories %}
+<section class="destination-section" data-country-id="{{ category[0] | replace: ' ', '-' }}">
 <h4 class="mt-5 mb-neg-30" id="{{ category[0] | replace: " ","-" }}"><span class="text-capitalize badge badge-primary text-small">{{ category[0] }}</span></h4>
 <div class="blog-grid-container">
 {% assign pages_list = category[1] | sort: 'title' %}
@@ -21,5 +39,6 @@ layout: default
 {% assign pages_list = nil %}
 {% assign group = nil %}
 </div>
+</section>
 {% endfor %}
 </div>

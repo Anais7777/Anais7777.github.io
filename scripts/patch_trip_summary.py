@@ -22,6 +22,8 @@ TEMPERATURI = {
     "transfagarsan": "+20°C",
     "varsovia": "+3°C",
     "venetia": "+22°C",
+    "padova": "+22°C",
+    "verona": "+22°C",
     "viena": "+10°C",
     "marmaris": "+27°C",
     "istanbul": "+20°C",
@@ -29,7 +31,9 @@ TEMPERATURI = {
     "skiathos": "+27°C",
     "skopelos": "+27°C",
     "olimp": "+25°C",
-    "sitonia": "+25°C",
+    "sithonia": "+25°C",
+    "kassandra": "+25°C",
+    "athos": "+25°C",
 }
 
 

@@ -12,6 +12,14 @@ EXCEL = ROOT / "excel datas"
 
 PLACEHOLDER = "*Urmează să completez cu povestea mea.*"
 
+CAR_SECTION_FILES = {
+    "2023-07-23-sithonia.md",
+    "2024-07-25-transfagarsan.md",
+    "2019-07-27-thassos.md",
+    "2017-07-28-olimp.md",
+    "2024-05-24-delta-dunarii.md",
+}
+
 
 def fmt(n):
     if n is None:
@@ -39,6 +47,7 @@ def yaml_trip(t):
         "persoane",
         "valuta",
         "buget_actual",
+        "buget_locala",
         "cazare",
         "cheltuieli_masina",
         "bilete_avion",
@@ -135,7 +144,6 @@ TRIPS = [
             "alimente": 3244.02,
             "bilete_locatii": 4723.08,
             "cumparaturi": 7847.35,
-            "masina": True,
             "avion": True,
         },
     },
@@ -177,6 +185,7 @@ TRIPS = [
             "persoane": 2,
             "valuta": "RON",
             "buget_actual": 7509.12,
+            "buget_locala": 1840,
             "cazare": 868.24,
             "transport_intern": 2398.77,
             "bilete_locatii": 2398.34,
@@ -230,7 +239,6 @@ TRIPS = [
             "bilete_locatii": 371.48,
             "suvenire": 168.81,
             "alimente": 320.06,
-            "masina": True,
         },
     },
     {
@@ -248,6 +256,7 @@ TRIPS = [
             "persoane": 4,
             "valuta": "RON",
             "buget_actual": 12838.60,
+            "buget_locala": 3210,
             "cazare": 3600.00,
             "cheltuieli_masina": 2392.80,
             "restaurante": 1520.00,
@@ -269,14 +278,35 @@ TRIPS = [
             "intoarcere": "2026-06-07",
             "durata": "4 nopți și 5 zile",
             "persoane": 2,
-            "valuta": "CZK",
+            "valuta": "EUR",
             "buget_actual": 4142.61,
+            "buget_locala": 204.19,
             "transport_intern": 1813.13,
             "restaurante": 1000.00,
             "bilete_locatii": 733.73,
             "cumparaturi": 528.90,
             "alimente": 66.85,
-            "masina": True,
+        },
+    },
+    {
+        "slug": "auschwitz",
+        "file": "2025-06-08-auschwitz.md",
+        "title": "Auschwitz",
+        "categories": ["Polonia"],
+        "date": "2025-06-08",
+        "image": "auschwitz.png",
+        "excel": "katowice.png",
+        "trip": {
+            "plecare": "2025-06-08",
+            "intoarcere": "2025-06-08",
+            "durata": "1 zi",
+            "persoane": 2,
+            "valuta": "PLN",
+            "buget_actual": 3469.45,
+            "buget_locala": 735,
+            "transport_intern": 2221.40,
+            "bilete_locatii": 1224.60,
+            "alimente": 23.45,
         },
     },
     {
@@ -293,13 +323,13 @@ TRIPS = [
             "durata": "3 nopți și 4 zile",
             "persoane": 2,
             "valuta": "PLN",
-            "buget_actual": 13415.67,
+            "buget_actual": 9946.22,
+            "buget_locala": 2113,
             "cazare": 3129.08,
             "bilete_avion": 1713.96,
-            "transport_intern": 5142.23,
-            "bilete_locatii": 1224.60,
+            "transport_intern": 2920.83,
             "restaurante": 1129.89,
-            "alimente": 522.48,
+            "alimente": 499.03,
             "cumparaturi": 553.42,
             "avion": True,
         },
@@ -377,6 +407,25 @@ TRIPS = [
         },
     },
     {
+        "slug": "vatican",
+        "file": "2025-11-05-vatican.md",
+        "title": "Vatican",
+        "categories": ["Vatican"],
+        "date": "2025-11-05",
+        "image": "vatican.png",
+        "excel": "roma.png",
+        "trip": {
+            "plecare": "2025-11-05",
+            "intoarcere": "2025-11-05",
+            "durata": "1 zi",
+            "persoane": 2,
+            "valuta": "EUR",
+            "buget_actual": 1313.33,
+            "buget_locala": 66,
+            "bilete_locatii": 1313.33,
+        },
+    },
+    {
         "slug": "roma",
         "file": "2025-11-04-roma.md",
         "title": "Roma",
@@ -390,11 +439,12 @@ TRIPS = [
             "durata": "4 nopți și 5 zile",
             "persoane": 2,
             "valuta": "EUR",
-            "buget_actual": 22549.79,
+            "buget_actual": 21236.46,
+            "buget_locala": 1062,
             "cazare": 7683.00,
             "bilete_avion": 1714.42,
             "transport_intern": 1598.46,
-            "bilete_locatii": 2427.50,
+            "bilete_locatii": 1114.17,
             "restaurante": 4045.66,
             "alimente": 950.04,
             "cumparaturi": 3674.29,
@@ -405,24 +455,68 @@ TRIPS = [
     {
         "slug": "transfagarsan",
         "file": "2024-07-25-transfagarsan.md",
-        "title": "Transfăgărășan + Praid + Argeș",
+        "title": "Transfăgărășan",
         "categories": ["România"],
         "date": "2024-07-25",
         "image": "transfagarsan.png",
         "excel": "transfagarsan.png",
         "trip": {
             "plecare": "2024-07-25",
-            "intoarcere": "2024-07-30",
-            "durata": "5 nopți și 6 zile",
+            "intoarcere": "2024-07-25",
+            "durata": "1 zi",
             "persoane": 4,
             "valuta": "RON",
-            "buget_actual": 18632.40,
-            "cazare": 8270.00,
-            "cheltuieli_masina": 3104.00,
+            "buget_actual": 3283.50,
+            "buget_locala": 821,
+            "cheltuieli_masina": 2321.50,
+            "bilete_locatii": 28.00,
+            "alimente": 1134.30,
+            "masina": True,
+        },
+    },
+    {
+        "slug": "praid",
+        "file": "2024-07-27-praid.md",
+        "title": "Praid",
+        "categories": ["România"],
+        "date": "2024-07-27",
+        "image": "praid.png",
+        "excel": "transfagarsan.png",
+        "trip": {
+            "plecare": "2024-07-27",
+            "intoarcere": "2024-07-28",
+            "durata": "2 nopți",
+            "persoane": 4,
+            "valuta": "RON",
+            "buget_actual": 10190.00,
+            "buget_locala": 2548,
+            "cazare": 6920.00,
+            "cheltuieli_masina": 80.00,
             "bilete_locatii": 1360.00,
             "restaurante": 1104.00,
-            "alimente": 1680.20,
-            "cumparaturi": 3086.20,
+            "alimente": 546.00,
+            "suvenire": 180.00,
+        },
+    },
+    {
+        "slug": "arges",
+        "file": "2024-07-28-arges.md",
+        "title": "Argeș",
+        "categories": ["România"],
+        "date": "2024-07-28",
+        "image": "arges.png",
+        "excel": "transfagarsan.png",
+        "trip": {
+            "plecare": "2024-07-28",
+            "intoarcere": "2024-07-30",
+            "durata": "2 nopți",
+            "persoane": 4,
+            "valuta": "RON",
+            "buget_actual": 5159.00,
+            "buget_locala": 1290,
+            "cazare": 1350.00,
+            "cheltuieli_masina": 902.90,
+            "cumparaturi": 2906.20,
             "masina": True,
         },
     },
@@ -453,7 +547,7 @@ TRIPS = [
     {
         "slug": "venetia",
         "file": "2026-05-05-venetia.md",
-        "title": "Veneția, Verona, Padova și Bassano",
+        "title": "Veneția",
         "categories": ["Italia"],
         "date": "2026-05-05",
         "image": "venetia.png",
@@ -463,14 +557,73 @@ TRIPS = [
             "intoarcere": "2026-05-12",
             "durata": "7 nopți și 8 zile",
             "persoane": 2,
-            "valuta": "CZK",
-            "buget_actual": 15687.85,
-            "transport_intern": 1311.66,
-            "bilete_locatii": 870.12,
-            "restaurante": 2098.57,
+            "valuta": "EUR",
+            "buget_actual": 13427.85,
+            "buget_locala": 654,
+            "transport_intern": 837.66,
+            "restaurante": 267.57,
             "cumparaturi": 10996.27,
             "suvenire": 102.01,
             "alimente": 309.22,
+        },
+    },
+    {
+        "slug": "padova",
+        "file": "2026-05-06-padova.md",
+        "title": "Padova",
+        "categories": ["Italia"],
+        "date": "2026-05-06",
+        "image": "venetia.png",
+        "excel": "venetia.png",
+        "trip": {
+            "plecare": "2026-05-06",
+            "intoarcere": "2026-05-06",
+            "durata": "1 zi",
+            "persoane": 2,
+            "valuta": "EUR",
+            "buget_actual": 1466.0,
+            "buget_locala": 72,
+            "transport_intern": 270.0,
+            "restaurante": 916.0,
+            "bilete_locatii": 280.0,
+        },
+    },
+    {
+        "slug": "verona",
+        "file": "2026-05-08-verona.md",
+        "title": "Verona",
+        "categories": ["Italia"],
+        "date": "2026-05-08",
+        "image": "venetia.png",
+        "excel": "venetia.png",
+        "trip": {
+            "plecare": "2026-05-08",
+            "intoarcere": "2026-05-08",
+            "durata": "1 zi",
+            "persoane": 2,
+            "valuta": "EUR",
+            "buget_actual": 590.0,
+            "buget_locala": 34,
+            "bilete_locatii": 590.0,
+        },
+    },
+    {
+        "slug": "bassano-del-grappa",
+        "file": "2026-05-10-bassano-del-grappa.md",
+        "title": "Bassano del Grappa",
+        "categories": ["Italia"],
+        "date": "2026-05-10",
+        "image": "venetia.png",
+        "excel": "venetia.png",
+        "trip": {
+            "plecare": "2026-05-10",
+            "intoarcere": "2026-05-10",
+            "durata": "1 zi",
+            "persoane": 2,
+            "valuta": "EUR",
+            "buget_actual": 204.0,
+            "buget_locala": 10,
+            "transport_intern": 204.0,
         },
     },
     {
@@ -516,6 +669,7 @@ EXISTING_UPDATES = {
             "persoane": 2,
             "valuta": "EUR",
             "buget_actual": 52868.00,
+            "buget_locala": 2650,
             "cazare": 52868.00,
         },
     },
@@ -529,9 +683,10 @@ EXISTING_UPDATES = {
             "plecare": "2023-11-05",
             "intoarcere": "2023-11-10",
             "durata": "5 nopți și 6 zile",
-            "persoane": 4,
+            "persoane": 2,
             "valuta": "TRY",
             "buget_actual": 10667.61,
+            "buget_locala": 17206,
             "cazare": 4233.60,
             "bilete_avion": 1504.00,
             "transport_intern": 1374.00,
@@ -556,6 +711,7 @@ EXISTING_UPDATES = {
             "persoane": 4,
             "valuta": "EUR",
             "buget_actual": 34995.57,
+            "buget_locala": 1750,
             "cazare": 21036.36,
             "cheltuieli_masina": 4822.34,
             "restaurante": 1516.00,
@@ -577,6 +733,7 @@ EXISTING_UPDATES = {
             "persoane": 2,
             "valuta": "EUR",
             "buget_actual": 11689.00,
+            "buget_locala": 577,
             "cazare": 2610.00,
             "bilete_avion": 5499.00,
             "transport_intern": 1275.75,
@@ -600,6 +757,7 @@ EXISTING_UPDATES = {
             "persoane": 2,
             "valuta": "EUR",
             "buget_actual": 11185.75,
+            "buget_locala": 552,
             "cazare": 5100.00,
             "transport_intern": 635.24,
             "restaurante": 3358.25,
@@ -621,6 +779,7 @@ EXISTING_UPDATES = {
             "persoane": 4,
             "valuta": "EUR",
             "buget_actual": 29940.40,
+            "buget_locala": 1426,
             "cazare": 29400.00,
             "cheltuieli_masina": 540.40,
             "masina": True,
@@ -662,7 +821,7 @@ def main():
 
     for trip in TRIPS:
         t = trip["trip"]
-        has_car = bool(t.get("masina") or (t.get("cheltuieli_masina") or 0) > 0)
+        has_car = trip["file"] in CAR_SECTION_FILES
         has_cazare = bool((t.get("cazare") or 0) > 0)
         body = body_sections(t, has_car, has_cazare)
         write_post(POSTS / trip["file"], trip, body)
@@ -674,81 +833,10 @@ def main():
             shutil.copy2(src, dst)
 
         t = meta["trip"]
-        has_car = bool(t.get("masina") or (t.get("cheltuieli_masina") or 0) > 0)
+        has_car = filename in CAR_SECTION_FILES
         has_cazare = bool((t.get("cazare") or 0) > 0)
         body = body_sections(t, has_car, has_cazare, intro=meta.get("intro"))
         write_post(POSTS / filename, meta, body)
-
-    # Istanbul: copy png if only webp exists - skip
-    # Sitonia: special handling - preserve long content
-    sitonia_path = POSTS / "2023-07-22-sitonia.md"
-    if sitonia_path.exists():
-        original = sitonia_path.read_text(encoding="utf-8")
-        # keep content after front matter
-        if original.startswith("---"):
-            parts = original.split("---", 2)
-            old_body = parts[2].strip() if len(parts) > 2 else ""
-        else:
-            old_body = original
-
-        meta = {
-        "title": "Halikidiki - trei perle într-o scoică",
-            "categories": ["Grecia"],
-            "date": "2023-07-23",
-            "image": "sithonia.webp",
-            "trip": {
-                "plecare": "2023-07-23",
-                "intoarcere": "2023-08-04",
-                "durata": "12 nopți și 13 zile",
-                "persoane": 4,
-                "valuta": "EUR",
-                "buget_actual": 58813.64,
-                "cazare": 36000.00,
-                "cheltuieli_masina": 4714.52,
-                "bilete_locatii": 2800.00,
-                "restaurante": 3970.00,
-                "alimente": 7845.56,
-                "cumparaturi": 1589.56,
-                "suvenire": 884.00,
-                "masina": True,
-            },
-        }
-
-        # Prepend buget/trip sections if missing, enable toc in front matter
-        budget_block = """## Buget
-
-**Detalii cheltuieli:** cazare 36 000 · cheltuieli mașină 4 715 · restaurante 3 970 · alimente 7 846 · bilete locații 2 800 · suvenire 884 · cumpărături 1 590 MDL
-
-## Trip cu mașina
-
-*Completează aici detaliile drumului spre Halkidiki.*
-
-"""
-        if "## Buget" not in old_body:
-            # insert after first paragraph block / before ## Jurnal
-            if "## Jurnal de călătorie" in old_body:
-                old_body = old_body.replace(
-                    "## Jurnal de călătorie", budget_block + "## Jurnal de călătorie", 1
-                )
-            else:
-                old_body = budget_block + old_body
-
-        cats = ", ".join(meta["categories"])
-        new_content = f"""---
-layout: post
-title: "{meta['title']}"
-categories: [ {cats} ]
-date: {meta['date']}
-image: assets/images/{meta['image']}
-toc: true
-beforetoc: "Cuprins"
-{yaml_trip(meta['trip'])}
----
-
-{old_body}
-"""
-        sitonia_path.write_text(new_content, encoding="utf-8")
-        print("  updated sitonia (preserved content)")
 
     # Muntenegru & Creta - structure only, no excel
     for filename, title, cat, date, img in [

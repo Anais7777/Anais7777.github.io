@@ -3,7 +3,7 @@ layout: post
 title: "Delta Dunării"
 categories: [ România ]
 date: 2024-05-24
-image: https://images.unsplash.com/photo-1674840966583-bac0dc737f5a?q=80&w=1163&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+image: assets/images/DeltaDunarii/delta-dunarii.jpg
 toc: true
 beforetoc: "Cuprins"
 trip:
@@ -14,6 +14,7 @@ trip:
   temperatura: +16°C
   valuta: RON
   buget_actual: 12838.6
+  buget_locala: 3210
   cazare: 3600.0
   cheltuieli_masina: 2392.8
   restaurante: 1520.0
@@ -28,15 +29,13 @@ Cheltuieli cazare (din Excel): **3 600 MDL**.
 
 ## Buget
 
-**Detalii cheltuieli:**
-- Cazare: 3 600 MDL
-- Cheltuieli mașină: 2 393 MDL
-- Restaurante: 1 520 MDL
-- Alimente: 168 MDL
-- Cumpărături: 3 157 MDL
+Delta Dunării, 4 persoane, 3 zile cu mașina: **3 210 RON** (12 839 MDL).
+
+Cazare **900 RON** (3 600 MDL). Drum: rovinietă + asigurare **175 RON** (700 MDL), alimentări Rompetrol și Cahul **~397 RON** (1 589 MDL), bac Galați **26 RON** (104 MDL).
+
+La La Sfatoi din Sfântu Gheorghe am mâncat pește proaspăt pentru **380 RON** (1 520 MDL) - șalău, saramură, scrumbie, somn prăjit cu mămăligă. Supermarket Murighiol **42 RON** (168 MDL). Cumpărături Dr Max, H&M, Carrefour **~790 RON** (3 157 MDL).
 
 ## Trip cu mașina
-Cheltuieli mașină (din Excel): **2 393 MDL**.
 
 *Urmează să completez cu povestea mea.*
 

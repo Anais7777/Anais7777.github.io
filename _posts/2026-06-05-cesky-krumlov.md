@@ -3,7 +3,8 @@ layout: post
 title: "Český Krumlov"
 categories: [ Cehia ]
 date: 2026-06-05
-image: https://images.unsplash.com/photo-1589312893179-38d2eb60655d?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+image: assets/images/CeskyKrumlov/cesky-krumlov.jpg
+thumb_position: bottom
 toc: true
 beforetoc: "Cuprins"
 trip:
@@ -14,6 +15,7 @@ trip:
   temperatura: +22°C
   valuta: CZK
   buget_actual: 2715.97
+  buget_locala: 3208
   transport_intern: 936.14
   restaurante: 919.48
   alimente: 320.06
@@ -23,16 +25,11 @@ trip:
 
 ## Buget
 
-**Detalii cheltuieli:**
-- Transport intern: 936 MDL
-- Bilete locații: 371 MDL
-- Restaurante: 919 MDL
-- Alimente: 320 MDL
-- Suvenire: 169 MDL
+Excursia de o zi la Český Krumlov a fost lejeră la buget: **3 208 CZK** (2 716 MDL) în total.
 
-## Trip cu mașina
+Am ajuns cu trenul din Praga - **1 100 CZK** (936 MDL). La castel am intrat la muzeu pentru **440 CZK** (371 MDL).
 
-*Urmează să completez cu povestea mea.*
+Pranzul l-am luat la [Krčma Šatlava](https://www.satlava.cz/) - o crasmă medievală din Šatlavská, unde am plătit **1 089 CZK** (919 MDL). Pe drum am luat un kurtos/trdelník de **379 CZK** (320 MDL), iar la final am cumpărat suvenire de **200 CZK** (169 MDL).
 
 ## Jurnal de călătorie
 

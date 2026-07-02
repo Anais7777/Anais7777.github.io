@@ -6,7 +6,7 @@ from pathlib import Path
 
 POSTS = Path(__file__).resolve().parent.parent / "_posts"
 
-# Destinații care existau înainte — poze proprii din assets/images/
+# Destinații — poze proprii din assets/images/
 LOCAL_IMAGES = {
     "marmaris": "assets/images/marmaris.webp",
     "istanbul": "assets/images/istanbul.webp",
@@ -15,8 +15,31 @@ LOCAL_IMAGES = {
     "skiathos": "assets/images/skiathos.webp",
     "skopelos": "assets/images/skopelos.webp",
     "olimp": "assets/images/olimp.webp",
-    "sitonia": "assets/images/sithonia.webp",
+    "sithonia": "assets/images/sithonia.webp",
+    "kassandra": "assets/images/sithonia.webp",
+    "athos": "assets/images/sithonia.webp",
     "creta": "assets/images/creta.webp",
+    "arges": "assets/images/Arges/arges.jpg",
+    "auschwitz": "assets/images/Auschwitz/auschwitz.jpg",
+    "barcelona": "assets/images/Barcelona/barcelona.jpg",
+    "bassano-del-grappa": "assets/images/Bassano/bassano.jpg",
+    "budapesta": "assets/images/Budapesta/budapesta.jpg",
+    "cesky-krumlov": "assets/images/CeskyKrumlov/cesky-krumlov.jpg",
+    "delta-dunarii": "assets/images/DeltaDunarii/delta-dunarii.jpg",
+    "dresda": "assets/images/Dresda/dresda.jpg",
+    "katowice": "assets/images/Katowice/katowice.jpg",
+    "napoli": "assets/images/Napoli/napoli.jpg",
+    "padova": "assets/images/Padova/padova.jpg",
+    "praga": "assets/images/Praga/praga.jpg",
+    "praid": "assets/images/Praid/praid.jpg",
+    "procida": "assets/images/Procida/procida.jpg",
+    "roma": "assets/images/Roma/roma.jpg",
+    "transfagarsan": "assets/images/Transfagarasan/transfagarsan.jpg",
+    "varsovia": "assets/images/Varsovia/varsovia.jpg",
+    "vatican": "assets/images/Vatican/vatican.jpg",
+    "venetia": "assets/images/Venetia/venetia.jpg",
+    "verona": "assets/images/Verona/verona.jpg",
+    "viena": "assets/images/Viena/viena.jpg",
 }
 
 
