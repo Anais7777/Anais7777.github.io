@@ -1,0 +1,99 @@
+{% if page.trip.drum %}
+<div class="trip-route">
+    {% if page.trip.drum.summary %}
+    {% assign summary_parts = page.trip.drum.summary | split: ' · ' %}
+    {% assign summary_route = summary_parts | first %}
+    {% assign summary_meta = page.trip.drum.summary | remove_first: summary_route %}
+    {% assign summary_stops = summary_route | split: ' ↔ ' %}
+    {% assign summary_arrow = 'arrow-left-right' %}
+    {% if summary_stops.size < 2 %}
+        {% assign summary_stops = summary_route | split: ' → ' %}
+        {% assign summary_arrow = 'arrow-right' %}
+    {% endif %}
+    <p class="trip-route-summary">
+        <span class="trip-route-badge trip-route-badge--summary" aria-hidden="true">{% include lucide.html name="car" size=16 %}</span>
+        <span class="trip-route-summary-text">
+            {% if summary_stops.size > 1 %}
+            <span class="trip-route-inline-path trip-route-inline-path--summary">
+                {% for stop in summary_stops %}
+                <span class="trip-route-stop">{{ stop }}</span>{% unless forloop.last %}<span class="trip-route-separator" aria-hidden="true">{% include lucide.html name=summary_arrow size=16 %}</span>{% endunless %}
+                {% endfor %}
+            </span>
+            {% else %}
+            <span class="trip-route-stop">{{ summary_route }}</span>
+            {% endif %}
+            {% if summary_meta != '' %}<span class="trip-route-summary-meta">{{ summary_meta }}</span>{% endif %}
+        </span>
+    </p>
+    {% endif %}
+    <dl class="trip-route-legs">
+        {% for leg in page.trip.drum.legs %}
+        {% assign leg_label_down = leg.label | downcase %}
+        {% if leg.icon %}
+            {% assign leg_icon = leg.icon %}
+        {% elsif leg_label_down contains 'întors' or leg_label_down contains 'intors' %}
+            {% assign leg_icon = 'arrow-left' %}
+        {% else %}
+            {% assign leg_icon = 'arrow-right' %}
+        {% endif %}
+        <div class="trip-route-leg">
+            <dt class="trip-route-leg-title">
+                <span class="trip-route-badge trip-route-badge--leg" aria-hidden="true">{% include lucide.html name=leg_icon size=16 %}</span>
+                <span class="trip-route-leg-heading">
+                    {{ leg.label }}{% if leg.km %}<span class="trip-route-km"> · ~{{ leg.km }} km</span>{% endif %}
+                </span>
+            </dt>
+            <dd class="trip-route-leg-body">
+                {% if leg.date %}
+                <span class="trip-route-row">
+                    <span class="trip-route-row-icon" aria-hidden="true">{% include lucide.html name="calendar" size=16 %}</span>
+                    <span>{{ leg.date }}</span>
+                </span>
+                {% endif %}
+                <span class="trip-route-row">
+                    <span class="trip-route-row-icon" aria-hidden="true">{% include lucide.html name="map-pin" size=16 %}</span>
+                    {% assign route_stops = leg.route | split: ' → ' %}
+                    <span class="trip-route-inline-path">
+                        {% for stop in route_stops %}
+                        <span class="trip-route-stop">{{ stop }}</span>{% unless forloop.last %}<span class="trip-route-separator" aria-hidden="true">{% include lucide.html name="arrow-right" size=15 %}</span>{% endunless %}
+                        {% endfor %}
+                    </span>
+                </span>
+                {% if leg.stopover %}
+                <span class="trip-route-row trip-route-row--meta">
+                    <span class="trip-route-row-icon" aria-hidden="true">{% include lucide.html name="bed" size=16 %}</span>
+                    <span class="trip-route-row-text">{{ leg.stopover | markdownify | remove: '<p>' | remove: '</p>' | strip }}</span>
+                </span>
+                {% endif %}
+                {% if leg.detail %}
+                {% assign detail_icon = leg.detail_icon | default: 'clock' %}
+                <span class="trip-route-row trip-route-row--meta">
+                    <span class="trip-route-row-icon" aria-hidden="true">{% include lucide.html name=detail_icon size=16 %}</span>
+                    <span class="trip-route-row-text">{{ leg.detail | markdownify | remove: '<p>' | remove: '</p>' | strip }}</span>
+                </span>
+                {% endif %}
+            </dd>
+        </div>
+        {% endfor %}
+    </dl>
+    {% if page.trip.drum.notes %}
+    <div class="trip-route-notes">
+        {% for note in page.trip.drum.notes %}
+        {% assign note_icon = note.icon | default: 'info' %}
+        <p class="trip-route-note">
+            <span class="trip-route-row-icon trip-route-row-icon--note" aria-hidden="true">{% include lucide.html name=note_icon size=16 %}</span>
+            <span>{{ note.text | markdownify | remove: '<p>' | remove: '</p>' | strip }}</span>
+        </p>
+        {% endfor %}
+    </div>
+    {% elsif page.trip.drum.note %}
+    {% assign note_icon = page.trip.drum.note_icon | default: 'info' %}
+    <div class="trip-route-notes">
+        <p class="trip-route-note">
+            <span class="trip-route-row-icon trip-route-row-icon--note" aria-hidden="true">{% include lucide.html name=note_icon size=16 %}</span>
+            <span>{{ page.trip.drum.note | markdownify | remove: '<p>' | remove: '</p>' | strip }}</span>
+        </p>
+    </div>
+    {% endif %}
+</div>
+{% endif %}

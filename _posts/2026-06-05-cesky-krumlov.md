@@ -23,11 +23,13 @@ trip:
   suvenire: 168.81
 ---
 
+Excursie de o zi din [Praga](/praga/) - vezi și [Dresda](/dresda/).
+
 ## Buget
 
 Excursia de o zi la Český Krumlov a fost lejeră la buget: **3 208 CZK** (2 716 MDL) în total.
 
-Am ajuns cu trenul din Praga - **1 100 CZK** (936 MDL). La castel am intrat la muzeu pentru **440 CZK** (371 MDL).
+Am ajuns cu trenul din [Praga](/praga/) - **1 100 CZK** (936 MDL). La castel am intrat la muzeu pentru **440 CZK** (371 MDL).
 
 Pranzul l-am luat la [Krčma Šatlava](https://www.satlava.cz/) - o crasmă medievală din Šatlavská, unde am plătit **1 089 CZK** (919 MDL). Pe drum am luat un kurtos/trdelník de **379 CZK** (320 MDL), iar la final am cumpărat suvenire de **200 CZK** (169 MDL).
 

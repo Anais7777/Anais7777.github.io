@@ -3,6 +3,7 @@ layout: post
 title: "Budapesta"
 categories: [ Ungaria ]
 date: 2026-06-16
+description: "Orașul de pe Dunăre cu poduri iconice între Buda și Pesta, despre care nu te poți decide dacă îți place mai tare ziua sau noaptea"
 image: assets/images/Budapesta/budapesta.jpg
 toc: true
 beforetoc: "Cuprins"
@@ -23,6 +24,8 @@ trip:
   bilete_locatii: 13833.93
   cumparaturi: 4313.61
 ---
+
+Orașul de pe Dunăre, cu Parlamentul iluminat, băi termale și poduri iconice între Buda și Pesta. Orașul despre care nu te poți decide dacă îți place mai tare ziua sau noaptea.
 
 ## Cazare
 

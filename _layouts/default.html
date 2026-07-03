@@ -29,6 +29,10 @@
 <meta property="og:title" content="{% if page.title %}{{ page.title }} | {{ site.name }}{% else %}{{ site.name }}{% endif %}">
 <meta property="og:description" content="{{ meta_description }}">
 <meta property="og:image" content="{% if page.image %}{% include image-url.html image=page.image %}{% else %}{{ site.url }}{{ site.baseurl }}/{{ site.og_image }}{% endif %}">
+{% unless page.image %}
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="1200">
+{% endunless %}
 <meta property="og:site_name" content="{{ site.name }}">
 <meta property="og:locale" content="{{ site.locale | default: 'ro_MD' }}">
 {% if page.layout == 'post' %}
@@ -86,9 +90,6 @@
 <!-- Begin Sidebar Navigation
 ================================================== -->
 
-<div class="nav-icon">
-    <div class="hamburger-bar"></div>
-</div>
 <div id="blackover-nav" class="blackover"></div>
 <nav id="menu">
     <ul>
@@ -102,22 +103,23 @@
 
 </nav>
 
-
-
 <!-- End Sidebar Navigation
 ================================================== -->
 
 <div class="site-content {% if page.url == '/' %} firstpage {% endif %}">
 
-<div class="container">
+<header class="site-header">
+    <div class="site-header-inner">
+        <a class="navbar-brand" href="{{ site.baseurl }}/">
+            <img src="{{ site.baseurl }}/{{ site.logo }}" alt="{{ site.name }}">
+        </a>
+        <div class="nav-icon">
+            <div class="hamburger-bar"></div>
+        </div>
+    </div>
+</header>
 
-    <!-- Site Logo/Name
-    ================================================== -->
-   
-    <a class="navbar-brand" href="{{ site.baseurl }}/">
-        <img src="{{ site.baseurl }}/{{ site.logo }}" alt="{{ site.name }}">
-    </a>  
-   
+<div class="container">
 
     <!-- Site Tag
     ================================================== -->

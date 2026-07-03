@@ -30,60 +30,131 @@ var idx = lunr(function () {
         this.add(doc)
     }, this)
 });
-function lunr_search(term) {
-    document.getElementById('lunrsearchresults').innerHTML = '<ul></ul>';
-    if(term) {
-        document.getElementById('lunrsearchresults').innerHTML = "<p>Rezultatele căutării pentru '" + term + "'</p>" + document.getElementById('lunrsearchresults').innerHTML;
-        //put results on the screen.
-        var results = idx.search(term);
-        if(results.length>0){
-            //console.log(idx.search(term));
-            //if results
-            for (var i = 0; i < results.length; i++) {
-                // more statements
-                var ref = results[i]['ref'];
-                var url = documents[ref]['url'];
-                var title = documents[ref]['title'];
-                var body = documents[ref]['body'].substring(0,160)+'...';
-                document.querySelectorAll('#lunrsearchresults ul')[0].innerHTML = document.querySelectorAll('#lunrsearchresults ul')[0].innerHTML + "<li class='lunrsearchresult'><a href='" + url + "' class='search-link'><span class='title'>" + title + "</span><span class='body'>"+ body +"</span><span class='url'>"+ url +"</span></a></li>";
-            }
-        } else {
-            document.querySelectorAll('#lunrsearchresults ul')[0].innerHTML = "<li class='lunrsearchresult'>Nu a fost găsit nimic...</li>";
-        }
+function escapeHtml(text) {
+    var div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+function highlightTerm(text, term) {
+    var safeText = escapeHtml(text);
+    if (!term) {
+        return safeText;
     }
-    return false;
+
+    term.trim().split(/\s+/).filter(Boolean).forEach(function (word) {
+        var pattern = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        var regex = new RegExp('(' + pattern + ')', 'gi');
+        safeText = safeText.replace(regex, '<mark class="search-highlight">$1</mark>');
+    });
+
+    return safeText;
+}
+
+function parseSearchBody(rawBody) {
+    var match = rawBody.match(/^(\d{4}\/\d{2}\/\d{2})\s*-\s*(.*)$/);
+    if (match) {
+        return { date: match[1], excerpt: match[2] };
+    }
+    return { date: null, excerpt: rawBody };
+}
+
+function closeSearchModal() {
+    $('#lunrsearchresults').hide(200);
+    $('body').removeClass('modal-open');
 }
 
 function lunr_search(term) {
-    $('#lunrsearchresults').show( 400 );
-    $( "body" ).addClass( "modal-open" );
-    
-    document.getElementById('lunrsearchresults').innerHTML = '<div id="resultsmodal" class="modal fade show d-block"  tabindex="-1" role="dialog" aria-labelledby="resultsmodal"> <div class="modal-dialog shadow" role="document"> <div class="modal-content"> <div class="modal-header" id="modtit">  </div> <div class="modal-body"> <ul class="mb-0"> </ul>    </div> <div class="modal-footer"><button id="btnx" type="button" class="btn btn-primary btn-sm" data-dismiss="modal">Close</button></div></div> </div></div>';
-    if(term) {
-        document.getElementById('modtit').innerHTML = "<h5 class='modal-title'>Rezultatele căutării pentru '" + term + "'</h5>" + document.getElementById('modtit').innerHTML;
-        //put results on the screen.
-        var results = idx.search(term);
-        if(results.length>0){
-            //console.log(idx.search(term));
-            //if results
-            for (var i = 0; i < results.length; i++) {
-                // more statements
-                var ref = results[i]['ref'];
-                var url = documents[ref]['url'];
-                var title = documents[ref]['title'];
-                var body = documents[ref]['body'].substring(0,160)+'...';
-                document.querySelectorAll('#lunrsearchresults ul')[0].innerHTML = document.querySelectorAll('#lunrsearchresults ul')[0].innerHTML + "<li class='lunrsearchresult'><a href='" + url + "' class='search-link'><span class='title'>" + title + "</span><small><span class='body'>"+ body +"</span><span class='url'>"+ url +"</span></small></a></li>";
-            }
-        } else {
-            document.querySelectorAll('#lunrsearchresults ul')[0].innerHTML = "<li class='lunrsearchresult'>Nu a fost găsit nimic. Încearcă să cauți altceva!</li>";
-        }
+    term = (term || '').trim();
+    if (!term) {
+        return false;
     }
+
+    var container = document.getElementById('lunrsearchresults');
+    if (container.parentElement !== document.body) {
+        document.body.appendChild(container);
+    }
+
+    $('#lunrsearchresults').show(200);
+    $('body').addClass('modal-open');
+
+    container.innerHTML =
+        '<div id="resultsmodal" class="modal fade show d-block search-results-modal" tabindex="-1" role="dialog" aria-labelledby="modtit" aria-modal="true">' +
+            '<div class="modal-dialog modal-dialog-scrollable search-results-dialog shadow" role="document">' +
+                '<div class="modal-content">' +
+                    '<div class="modal-header search-results-header">' +
+                        '<div class="search-results-heading">' +
+                            '<h5 class="modal-title" id="modtit"></h5>' +
+                            '<p class="search-results-count" id="modcount"></p>' +
+                        '</div>' +
+                        '<button type="button" class="search-results-close" id="btnx-top" aria-label="Închide">&times;</button>' +
+                    '</div>' +
+                    '<div class="modal-body search-results-body">' +
+                        '<ul class="search-results-list mb-0"></ul>' +
+                    '</div>' +
+                    '<div class="modal-footer search-results-footer">' +
+                        '<button type="button" class="btn btn-primary btn-sm" id="btnx">Închide</button>' +
+                    '</div>' +
+                '</div>' +
+            '</div>' +
+        '</div>';
+
+    var results = idx.search(term);
+    var listEl = document.querySelector('#lunrsearchresults .search-results-list');
+    document.getElementById('modtit').textContent = 'Rezultate pentru „' + term + '”';
+
+    if (results.length > 0) {
+        document.getElementById('modcount').textContent =
+            results.length + (results.length === 1 ? ' articol găsit' : ' articole găsite');
+
+        for (var i = 0; i < results.length; i++) {
+            var doc = documents[results[i].ref];
+            var parsed = parseSearchBody(doc.body);
+            var excerpt = parsed.excerpt.substring(0, 160);
+            if (parsed.excerpt.length > 160) {
+                excerpt += '…';
+            }
+
+            var itemHtml =
+                '<li class="lunrsearchresult">' +
+                    '<a href="' + doc.url + '" class="search-link">' +
+                        '<span class="title">' + highlightTerm(doc.title, term) + '</span>';
+
+            if (parsed.date) {
+                itemHtml += '<span class="search-date">' + parsed.date + '</span>';
+            }
+
+            itemHtml +=
+                        '<span class="body">' + highlightTerm(excerpt, term) + '</span>' +
+                    '</a>' +
+                '</li>';
+
+            listEl.innerHTML += itemHtml;
+        }
+    } else {
+        document.getElementById('modcount').textContent = '';
+        listEl.innerHTML =
+            '<li class="lunrsearchresult search-results-empty">' +
+                '<p class="search-results-empty-title">Niciun rezultat</p>' +
+                '<p class="search-results-empty-text">Nu am găsit nimic pentru „' + escapeHtml(term) + '”. Încearcă alt nume de destinație.</p>' +
+            '</li>';
+    }
+
     return false;
 }
-    
-$(function() {
-    $("#lunrsearchresults").on('click', '#btnx', function () {
-        $('#lunrsearchresults').hide( 5 );
-        $( "body" ).removeClass( "modal-open" );
+
+$(function () {
+    $('#lunrsearchresults').on('click', '#btnx, #btnx-top', closeSearchModal);
+
+    $('#lunrsearchresults').on('click', '#resultsmodal', function (e) {
+        if (!$(e.target).closest('.modal-dialog').length) {
+            closeSearchModal();
+        }
+    });
+
+    $(document).on('keyup.searchModal', function (e) {
+        if (e.keyCode === 27 && $('#lunrsearchresults').is(':visible')) {
+            closeSearchModal();
+        }
     });
 });

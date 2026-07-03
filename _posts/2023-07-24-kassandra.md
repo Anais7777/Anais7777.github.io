@@ -17,6 +17,20 @@ trip:
   buget_locala: 104
   suvenire: 884.0
   alimente: 1200.0
+  drum:
+    summary: "Sithonia → Kassandra → Sithonia"
+    legs:
+      - label: "Excursie"
+        icon: route
+        date: "3 aug · din Vourvourou"
+        km: 157
+        route: "Vourvourou → Nikiti → Nea Moudania → Afitos → Kallithea → Nea Fokea → Vourvourou"
+        detail: "157 km dus-întors · sosire vilă ~17:55"
+    notes:
+      - icon: fuel
+        text: "Benzină: înainte de Kassandra ~1,89-1,99 EUR, EKO 1,979 EUR, Aegean ~1,92-1,96 EUR."
+      - icon: info
+        text: "Excursie de o zi din [Sithonia](/sithonia/) (Villa Elea, Vourvourou). Am fost de două ori în Afitos."
 ---
 
 Excursii de o zi din [Sithonia](/sithonia/) - vezi și [Athos](/athos/).
@@ -28,6 +42,9 @@ Kassandra (Afitos, Kallithea, Nea Fokea), 4 persoane, excursii de o zi: **104 EU
 
 Suvenire Afitos **44,20 EUR** (884 MDL). Ulei de măsline din Afitos **60 EUR** (1 200 MDL).
 
+## Trip cu mașina
+
+{% include trip-route.html %}
 
 ## Jurnal de călătorie
 

@@ -11,12 +11,13 @@
   {% assign from = to | minus: 4 | at_least: 1 %}
 
   {% for page in (from..to) %}
+    {% assign page_index = page | minus: from %}
     {% if page == paginator.page %}
-      <span class="ml-1 mr-1">{{ page }}</span>
+      <span class="ml-1 mr-1 page-num page-num-{{ page_index }}">{{ page }}</span>
     {% elsif page == 1 %}
-      <a class="ml-1 mr-1" href="{{ site.baseurl | append: '/' | replace: '//', '/' }}">{{ page }}</a>
+      <a class="ml-1 mr-1 page-num page-num-{{ page_index }}" href="{{ site.baseurl | append: '/' | replace: '//', '/' }}">{{ page }}</a>
     {% else %}
-      <a class="ml-1 mr-1" href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
+      <a class="ml-1 mr-1 page-num page-num-{{ page_index }}" href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
     {% endif %}
   {% endfor %}
 

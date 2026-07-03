@@ -1,0 +1,6 @@
+{% if page.grup_insular %}
+{% assign grup_label = site.data.grupuri_insulare[page.grup_insular] %}
+{% if grup_label %}
+<p>{{ page.title }} face parte din {{ grup_label }}.</p>
+{% endif %}
+{% endif %}

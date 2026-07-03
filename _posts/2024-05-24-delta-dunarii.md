@@ -20,12 +20,25 @@ trip:
   restaurante: 1520.0
   alimente: 168.4
   cumparaturi: 3157.4
+  drum:
+    summary: "Chișinău ↔ Delta Dunării"
+    legs:
+      - label: "Dus"
+        date: "24 mai · plecare ~10:20"
+        km: 400
+        route: "Chișinău → Cahul → vamă → Galați → Murighiol"
+        detail: "Ajuns la cazare ~17:00"
+      - label: "Întors"
+        date: "26 mai · plecare ~10:40"
+        route: "Murighiol → Tulcea → bac Galați → Galați Mall → vamă → Chișinău"
+        detail: "Ajuns acasă ~19:25"
+    note: "Bac Galați: autoturism 20 RON + pasager 6 RON (șoferul nu plătește separat). Pe dus, la Galați treceam un pod aflat încă în construcție."
+    note_icon: ship
 ---
 
 ## Cazare
-Cheltuieli cazare (din Excel): **3 600 MDL**.
 
-*Urmează să completez cu povestea mea.*
+Am stat la [Casa Vlad](https://www.booking.com/hotel/ro/casa-vlad-tulcea.ro.html) - Murighiol, Delta Dunării. Pentru 2 nopți și 3 zile am achitat **900 RON** (3 600 MDL).
 
 ## Buget
 
@@ -37,7 +50,7 @@ La La Sfatoi din Sfântu Gheorghe am mâncat pește proaspăt pentru **380 RON**
 
 ## Trip cu mașina
 
-*Urmează să completez cu povestea mea.*
+{% include trip-route.html %}
 
 ## Jurnal de călătorie
 

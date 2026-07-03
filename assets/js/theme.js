@@ -115,7 +115,7 @@ jQuery(document).ready(function($){
         }
     })();
 
-    // Smooth scroll — getElementById (jQuery #id fails with diacritics e.g. călătorie)
+    // Smooth scroll - getElementById (jQuery #id fails with diacritics e.g. călătorie)
     $(function () {
       function smoothScrollToHash(hash) {
         if (!hash || hash === '#') {
@@ -200,34 +200,56 @@ setTimeout(function(){
 },500);
 
 // Open/close navigation when clicked .nav-icon
+var menuScrollY = 0;
+
+function lockMenuScroll() {
+	menuScrollY = window.scrollY || window.pageYOffset;
+	document.documentElement.style.overflow = 'hidden';
+	document.body.style.overflow = 'hidden';
+	document.body.style.position = 'fixed';
+	document.body.style.top = '-' + menuScrollY + 'px';
+	document.body.style.width = '100%';
+}
+
+function unlockMenuScroll() {
+	document.documentElement.style.overflow = '';
+	document.body.style.overflow = '';
+	document.body.style.position = '';
+	document.body.style.top = '';
+	document.body.style.width = '';
+	window.scrollTo(0, menuScrollY);
+}
+
+function openMenu() {
+	$('.nav-icon').addClass('active');
+	$('#menu').addClass('active');
+	$('#blackover-nav').addClass('active');
+	$('body').addClass('active-side');
+	lockMenuScroll();
+}
+
+function closeMenu() {
+	$('.nav-icon').removeClass('active');
+	$('#menu').removeClass('active');
+	$('#blackover-nav').removeClass('active');
+	$('body').removeClass('active-side');
+	unlockMenuScroll();
+}
+
 $(document).ready(function(){
 	$('.nav-icon').click(function(){
-		$('.nav-icon').toggleClass('active');
-	});
-	$(".nav-icon").click(function(){
-		$("#menu").toggleClass('active');
-	});
-	$(".nav-icon").click(function(){
-		$("#blackover-nav").toggleClass('active');
-	});
-	$(".nav-icon").click(function(){
-		$("body").toggleClass('active-side');
+		if ($('body').hasClass('active-side')) {
+			closeMenu();
+		} else {
+			openMenu();
+		}
 	});
 });
 
 // Close navigation when clicked .blackover (Black background)
 $(document).ready(function(){
-	$("#blackover-nav").click(function(){
-		$(".nav-icon").removeClass('active');
-	});
-	$("#blackover-nav").click(function(){
-		$("#menu").removeClass('active');
-	});
-	$("#blackover-nav").click(function(){
-		$("#blackover-nav").removeClass('active');
-	});
-	$("#blackover-nav").click(function(){
-		$("body").removeClass('active-side');
+	$('#blackover-nav').click(function(){
+		closeMenu();
 	});
 });
 
@@ -242,11 +264,8 @@ $(document).ready(function(){
 });
 
 $(document).keyup(function(e) {
-	if (e.keyCode == 27) { 
-		$(".nav-icon").removeClass('active');
-		$("#menu").removeClass('active');
-		$("#blackover-nav").removeClass('active');
-		$("body").removeClass('active-side');
+	if (e.keyCode == 27 && $('body').hasClass('active-side')) {
+		closeMenu();
 	}
 });
 
@@ -313,7 +332,7 @@ $(document).ready(function(){
 
 });
 
-// Custom cursor — cerc cu stroke #42d0ff, fill la hover
+// Custom cursor - cerc cu stroke #42d0ff, fill la hover
 $(document).ready(function () {
 	if (!window.matchMedia('(pointer: fine)').matches) {
 		return;
