@@ -25,6 +25,19 @@ trip:
 
 Excursie de o zi din [Praga](/praga/) - vezi și [Dresda](/dresda/).
 
+## Transport
+
+Tren cumpărat online de pe [České dráhy](https://www.cd.cz/en/default.htm):
+
+| Direcție | Plecare | Sosire |
+|----------|---------|--------|
+| Dus · Praga - Český Krumlov | **09:21** | **11:49** |
+| Întors · Český Krumlov - České Budějovice | **18:57** | **19:43** |
+| Întors · České Budějovice - Praga | **20:10** | **22:10** |
+{: .table-schedule}
+
+La întors nu am făcut popas în České Budějovice - tren cu **o conexiune**, am schimbat trenul acolo. Așa era biletul când l-am luat de pe cd.cz.
+
 ## Buget
 
 Excursia de o zi la Český Krumlov a fost lejeră la buget: **3 208 CZK** (2 716 MDL) în total.

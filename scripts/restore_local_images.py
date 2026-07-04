@@ -25,6 +25,7 @@ LOCAL_IMAGES = {
     "barcelona": "assets/images/Barcelona/barcelona.jpg",
     "bassano-del-grappa": "assets/images/Bassano/bassano.jpg",
     "budapesta": "assets/images/Budapesta/budapesta.jpg",
+    "castelfranco-veneto": "assets/images/Castelfranco/castelfranco.jpg",
     "cesky-krumlov": "assets/images/CeskyKrumlov/cesky-krumlov.jpg",
     "delta-dunarii": "assets/images/DeltaDunarii/delta-dunarii.jpg",
     "dresda": "assets/images/Dresda/dresda.jpg",

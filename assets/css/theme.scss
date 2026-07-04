@@ -1163,8 +1163,16 @@ figcaption {
     }
 
     h3 {
-        margin-top: 3rem;
-        margin-bottom: 0.4rem;
+        font-size: 18px;
+        font-weight: 700;
+        margin-top: 1.5rem;
+        margin-bottom: 0.35rem;
+    }
+
+    p:has(> strong:only-child),
+    p:has(> strong > a:only-child) {
+        margin-top: 1.25rem;
+        margin-bottom: 0.25rem;
     }
 
     h4 {
@@ -1246,6 +1254,83 @@ figcaption {
     blockquote {
         margin-top: 1.25rem;
         margin-bottom: 1.25rem;
+    }
+
+    table {
+        width: 100%;
+        max-width: 100%;
+        margin: 1.25rem 0 1.5rem;
+        border-collapse: collapse;
+
+        th,
+        td {
+            padding: 0.65rem 1.25rem;
+            vertical-align: top;
+            border-bottom: 1px solid rgba($body-color, 0.1);
+        }
+
+        th {
+            font-weight: 600;
+            text-align: left;
+        }
+
+        th:first-child,
+        td:first-child {
+            padding-left: 0;
+        }
+
+        th:last-child,
+        td:last-child {
+            padding-right: 0;
+        }
+    }
+
+    // 2-column tables (e.g. Categorie | MDL)
+    table:not(:has(th:nth-child(3))) {
+        th:first-child,
+        td:first-child {
+            width: 100%;
+        }
+
+        th:nth-child(2),
+        td:nth-child(2) {
+            text-align: right;
+            white-space: nowrap;
+            padding-left: 2rem;
+        }
+    }
+
+    // Schedule tables: label left, times on the right (Direcție | Plecare | Sosire)
+    table.table-schedule {
+        th:first-child,
+        td:first-child {
+            width: 100%;
+        }
+
+        th:nth-child(n + 2),
+        td:nth-child(n + 2) {
+            text-align: right;
+            white-space: nowrap;
+            padding-left: 1.25rem;
+        }
+    }
+
+    // 3-column tables (e.g. Loc | Plătit | Detalii)
+    table:has(th:nth-child(3):last-child):not(:has(th:nth-child(4))) {
+        th:nth-child(2),
+        td:nth-child(2) {
+            text-align: right;
+            white-space: nowrap;
+        }
+    }
+
+    // 4+ column tables (e.g. transport)
+    table:has(th:nth-child(4)) {
+        th:nth-child(n + 2),
+        td:nth-child(n + 2) {
+            text-align: right;
+            white-space: nowrap;
+        }
     }
 
     // Lone <br> in markdown becomes <p><br></p> - hide, use margins below instead
