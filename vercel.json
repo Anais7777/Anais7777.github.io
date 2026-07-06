@@ -5,6 +5,12 @@
     }
   },
   "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "scriucutolk.md" }],
+      "destination": "https://www.scriucutolk.md/:path*",
+      "permanent": true
+    },
     { "source": "/about", "destination": "/despre/", "permanent": true },
     { "source": "/about/", "destination": "/despre/", "permanent": true },
     { "source": "/contact", "destination": "/contacte/", "permanent": true },
@@ -13,10 +19,13 @@
     { "source": "/categories/", "destination": "/destinatii/", "permanent": true },
     { "source": "/category/:name", "destination": "/categorie/:name", "permanent": true },
     { "source": "/category/:name/", "destination": "/categorie/:name/", "permanent": true },
-    { "source": "/page:num", "destination": "/pagina:num", "permanent": true },
+    { "source": "/page:number(\\d+)", "destination": "/pagina:number", "permanent": true },
+    { "source": "/page:number(\\d+)/", "destination": "/pagina:number/", "permanent": true },
     { "source": "/tags", "destination": "/etichete/", "permanent": true },
     { "source": "/tags/", "destination": "/etichete/", "permanent": true },
     { "source": "/authors", "destination": "/autori/", "permanent": true },
-    { "source": "/authors/", "destination": "/autori/", "permanent": true }
+    { "source": "/authors/", "destination": "/autori/", "permanent": true },
+    { "source": "/sitonia", "destination": "/sithonia/", "permanent": true },
+    { "source": "/sitonia/", "destination": "/sithonia/", "permanent": true }
   ]
 }
