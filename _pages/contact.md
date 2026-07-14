@@ -14,7 +14,7 @@ comments: false
   3. Deploy to Vercel - the API route will handle submissions
 -->
 <form id="contact-form" method="POST">
-<p class="mb-4">Ai ceva sugestii pentru scriucutolk? Părerea ta contează pentru noi! </p>
+<p class="mb-4">Te ajut să-ți planifici următoarea călătorie, scrie-mi aici! </p>
 <div id="form-message" class="alert" style="display:none;"></div>
 <div class="form-group row">
 <div class="col-md-6">
