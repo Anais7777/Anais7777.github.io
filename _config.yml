@@ -6,7 +6,7 @@ url: "https://www.scriucutolk.md"
 baseurl: ""
 logo: 'assets/images/logo.png'
 favicon: 'assets/images/favicon.png'
-og_image: 'assets/images/og-banner.png'
+og_image: 'assets/images/og-banner-v2.png'
 twitter:
   username: ""
   card: "summary_large_image"
