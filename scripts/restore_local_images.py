@@ -18,6 +18,8 @@ LOCAL_IMAGES = {
     "sithonia": "assets/images/Sithonia/sithonia.jpg",
     "kassandra": "assets/images/Kassandra/kassandra.jpg",
     "athos": "assets/images/Athos/athos.jpg",
+    "atena": "assets/images/Atena/atena.jpg",
+    "aegina": "assets/images/Aegina/aegina.jpg",
     "creta": "assets/images/Creta/creta.webp",
     "berlin": "assets/images/Berlin/berlin.jpg",
     "arges": "assets/images/Arges/arges.jpg",
