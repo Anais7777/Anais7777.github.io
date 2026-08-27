@@ -23,6 +23,18 @@ body {
     line-height:1.7;
     background: #f4f4f4;
 }
+
+// Offset hash jumps when JS is off (theme.js handles sticky offset on click)
+html {
+    scroll-padding-top: 5.5rem;
+}
+
+@media (max-width: 1024px) {
+    html {
+        scroll-padding-top: 5rem;
+    }
+}
+
 a {
     color: darken($primary, 24%);
 }
@@ -94,7 +106,6 @@ h1,h2,h3,h4,h5,h6 {
     margin-right: auto;
     background: #fff;
     border: 1px solid rgba(0, 0, 0, 0.08);
-    scroll-margin-top: 7rem;
 
     .buy-maps-title {
         font-size: 1.15rem;

@@ -117,6 +117,18 @@ jQuery(document).ready(function($){
 
     // Smooth scroll - getElementById (jQuery #id fails with diacritics e.g. călătorie)
     $(function () {
+      function stickyHeaderOffset() {
+        var header = document.querySelector('.site-header');
+        if (!header) {
+          return 0;
+        }
+        var pos = window.getComputedStyle(header).position;
+        if (pos !== 'fixed' && pos !== 'sticky') {
+          return 0;
+        }
+        return Math.ceil(header.getBoundingClientRect().height) + 16;
+      }
+
       function smoothScrollToHash(hash) {
         if (!hash || hash === '#') {
           return false;
@@ -126,22 +138,21 @@ jQuery(document).ready(function($){
         if (!el) {
           return false;
         }
-        $('html, body').animate({
-          scrollTop: $(el).offset().top
-        }, 1000);
+        var top = Math.max(0, $(el).offset().top - stickyHeaderOffset());
+        $('html, body').stop(true).animate({ scrollTop: top }, 500);
         return true;
       }
 
       setTimeout(function () {
         if (location.hash) {
-          window.scrollTo(0, 0);
           smoothScrollToHash(location.hash);
         }
-      }, 1);
+      }, 50);
 
-      $('a[href*="#"]:not([href="#"])').click(function () {
+      $('a[href*="#"]:not([href="#"])').on('click', function (e) {
         if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') && location.hostname === this.hostname) {
           if (smoothScrollToHash(this.hash)) {
+            e.preventDefault();
             if (history.pushState) {
               history.pushState(null, null, this.hash);
             }
