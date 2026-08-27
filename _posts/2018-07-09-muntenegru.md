@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Muntenegru"
+maps_slug: muntenegru
 categories: [ Muntenegru ]
 date: 2018-07-09
 image: assets/images/Muntenegru/muntenegru.webp

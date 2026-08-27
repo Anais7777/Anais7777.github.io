@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Bassano del Grappa"
+maps_slug: bassano-del-grappa
 categories: [ Italia ]
 date: 2026-05-09
 image: assets/images/Bassano/bassano.jpg

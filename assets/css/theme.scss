@@ -87,6 +87,58 @@ h1,h2,h3,h4,h5,h6 {
 .btn {
     min-width: 180px;
 }
+
+.buy-maps {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+
+    .buy-maps-title {
+        font-size: 1.15rem;
+        line-height: 1.4;
+    }
+
+    .buy-maps-desc {
+        // max-width: 22rem;
+        font-size: 1rem;
+        line-height: 1.55;
+    }
+
+    .buy-maps-btn {
+        background: $blue;
+        border-color: $blue;
+        color: #111;
+        font-weight: 700;
+        padding: 0.65rem 1.5rem;
+        min-width: 12rem;
+        cursor: pointer;
+        transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+
+        &:hover,
+        &:focus {
+            background: darken($blue, 18%);
+            border-color: darken($blue, 18%);
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
+        }
+
+        &:active {
+            background: darken($blue, 22%);
+            border-color: darken($blue, 22%);
+            color: #fff;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.14);
+        }
+
+        &:disabled {
+            opacity: 0.7;
+            cursor: wait;
+            box-shadow: none;
+        }
+    }
+}
+
 .trip-facts {
     background: #f8f9fa;
     border-left: 4px solid $primary;
@@ -1312,6 +1364,16 @@ figcaption {
             text-align: right;
             white-space: nowrap;
             padding-left: 1.25rem;
+        }
+
+        // Mobile: hide "Câte" (3rd col) so 4-col transport tables fit
+        @media (max-width: 768px) {
+            &:has(th:nth-child(4)) {
+                th:nth-child(3),
+                td:nth-child(3) {
+                    display: none;
+                }
+            }
         }
     }
 

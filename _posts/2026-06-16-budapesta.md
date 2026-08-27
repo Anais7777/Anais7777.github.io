@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Budapesta"
+maps_slug: budapesta
 categories: [ Ungaria ]
 date: 2026-06-16
 description: "Orașul de pe Dunăre cu poduri iconice între Buda și Pesta, despre care nu te poți decide dacă îți place mai tare ziua sau noaptea"

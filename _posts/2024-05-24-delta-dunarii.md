@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Delta Dunării"
+maps_slug: delta-dunarii
 categories: [ România ]
 date: 2024-05-24
 image: assets/images/DeltaDunarii/delta-dunarii.jpg

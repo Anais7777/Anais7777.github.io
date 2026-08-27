@@ -5,14 +5,6 @@ permalink: /contacte/
 comments: false
 ---
 
-<!-- 
-  TO CONNECT TO GOOGLE SHEET:
-  1. Follow instructions in GOOGLE_SHEETS_API_SETUP.md
-  2. Set up Vercel environment variables:
-     - GOOGLE_SHEET_ID
-     - GOOGLE_SERVICE_ACCOUNT_KEY (entire JSON as string)
-  3. Deploy to Vercel - the API route will handle submissions
--->
 <form id="contact-form" method="POST">
 <p class="mb-4">Te ajut să-ți planifici următoarea călătorie, scrie-mi aici! </p>
 <div id="form-message" class="alert" style="display:none;"></div>
@@ -44,13 +36,16 @@ document.getElementById('contact-form').addEventListener('submit', async functio
     const formData = new FormData(form);
     const data = {
         name: formData.get('name'),
+        email: formData.get('_replyto'),
         _replyto: formData.get('_replyto'),
         message: formData.get('message')
     };
     
     try {
-        // Submit to API route
-        const response = await fetch('/api/submit-contact', {
+        const apiBase = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+            ? 'http://localhost:3000'
+            : 'https://api.scriucutolk.md';
+        const response = await fetch(apiBase + '/api/contact', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

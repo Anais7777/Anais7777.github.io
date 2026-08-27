@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Český Krumlov"
+maps_slug: cesky-krumlov
 categories: [ Cehia ]
 date: 2026-06-05
 image: assets/images/CeskyKrumlov/cesky-krumlov.jpg

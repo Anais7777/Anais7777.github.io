@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Castelfranco Veneto"
+maps_slug: castelfranco-veneto
 categories: [ Italia ]
 date: 2026-05-05
 description: "Bază în Veneto - excursii spre Noventa di Piave, Veneția, Bassano, Verona și Padova"

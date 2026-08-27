@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Kassandra"
+maps_slug: kassandra
 categories: [ Grecia ]
 date: 2023-07-24
 image: assets/images/Kassandra/kassandra.jpg

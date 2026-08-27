@@ -49,6 +49,11 @@ imageshadow: true
 <!-- Content -->
 {% include article.html %}
 
+{% if page.maps_slug %}
+{% include buy-maps.html slug=page.maps_slug %}
+<script src="{{ site.baseurl }}/assets/js/buy-maps.js" defer></script>
+{% endif %}
+
 <!-- Rating -->
 {% if page.rating %}
 <div class="rating mt-4 mb-4 d-flex align-items-center">

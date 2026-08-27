@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Auschwitz"
+maps_slug: auschwitz
 categories: [ Polonia ]
 date: 2025-06-08
 image: assets/images/Auschwitz/auschwitz.jpg

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Transfăgărășan"
+maps_slug: transfagarsan
 categories: [ România ]
 date: 2024-07-25
 image: assets/images/Transfagarasan/transfagarsan.jpg

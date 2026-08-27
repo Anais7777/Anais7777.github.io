@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Barcelona"
+maps_slug: barcelona
 categories: [ Spania ]
 date: 2025-05-06
 image: assets/images/Barcelona/barcelona.jpg
