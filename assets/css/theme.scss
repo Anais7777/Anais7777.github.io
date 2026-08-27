@@ -761,7 +761,54 @@ img, img:hover {
 }
 
 .firstpage {
-    .blog-grid-item:not(:nth-child(1)) {
+    // Side cards (2 + 3) stretch to match the hero's bottom edge
+    .blog-grid-item:nth-child(2),
+    .blog-grid-item:nth-child(3) {
+        align-self: stretch;
+        height: 100%;
+
+        .card {
+            height: 100% !important;
+            min-height: 100%;
+        }
+
+        .maxthumb {
+            flex: 1 1 auto;
+            min-height: 240px;
+            position: relative;
+        }
+
+        .img-thumb {
+            position: absolute;
+            inset: 0;
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+            min-height: 0;
+            min-width: 0;
+            object-position: center;
+        }
+
+        .card-body {
+            flex: 0 0 auto;
+        }
+
+        .card-footer {
+            margin-top: 0;
+        }
+
+        .card-text {
+            display: none;
+        }
+
+        .card-title {
+            font-size: 18px;
+            line-height: 1.5;
+        }
+    }
+
+    // Cards below the hero block: natural height
+    .blog-grid-item:nth-child(n + 4) {
         align-self: start;
 
         .card {
@@ -802,22 +849,6 @@ img, img:hover {
             width:100%;
             object-position: center;
         }
-    }
-
-    .blog-grid-item:nth-child(2), .blog-grid-item:nth-child(3) {
-        .card-text {
-            display:none;
-        }
-        .img-thumb {
-            object-fit:cover;
-            height: 240px;
-            width:100%;
-            object-position: center;
-        }
-        .card-title {
-            font-size:18px;
-            line-height:1.5;
-        }      
     }
 }
 
