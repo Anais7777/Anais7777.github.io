@@ -13,22 +13,12 @@ document.addEventListener("DOMContentLoaded", function () {
     btn.addEventListener("click", async function () {
       btn.disabled = true;
       if (err) err.style.display = "none";
-      try {
-        var res = await fetch(api + "/api/checkout", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ slug: btn.getAttribute("data-slug") }),
-        });
-        var data = await res.json();
-        if (!res.ok) throw new Error(data.message || "Checkout indisponibil");
-        window.location.href = data.approvalUrl;
-      } catch (e) {
-        if (err) {
-          err.textContent = e.message || "Nu am putut porni plata.";
-          err.style.display = "block";
-        }
+      var slug = btn.getAttribute("data-slug");
+      if (!slug) {
         btn.disabled = false;
+        return;
       }
+      window.location.href = api + "/checkout/" + encodeURIComponent(slug);
     });
   });
 });

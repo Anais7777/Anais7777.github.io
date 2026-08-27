@@ -94,6 +94,7 @@ h1,h2,h3,h4,h5,h6 {
     margin-right: auto;
     background: #fff;
     border: 1px solid rgba(0, 0, 0, 0.08);
+    scroll-margin-top: 7rem;
 
     .buy-maps-title {
         font-size: 1.15rem;
@@ -1819,11 +1820,32 @@ footer {
     }
 }
 @media (min-width: 1025px) {
+    .site-content {
+        padding-top: calc(70px + 40px);
+    }
     .site-header {
-        margin-bottom: 40px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1025;
+        margin-bottom: 0;
+        background: transparent;
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(244, 244, 244, 0.78);
+            backdrop-filter: blur(12px) saturate(140%);
+            -webkit-backdrop-filter: blur(12px) saturate(140%);
+            z-index: 0;
+        }
     }
     .site-header-inner {
-        padding: 20px 15px 15px;
+        position: relative;
+        z-index: 1;
+        padding: 20px;
         align-items: flex-end;
     }
     .nav-icon {
