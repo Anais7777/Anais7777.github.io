@@ -1,0 +1,23 @@
+---
+layout: null
+permalink: /llms-full.txt
+sitemap: false
+---
+# {{ site.name }} — conținut complet
+
+> Export text al ghidurilor de călătorie de pe {{ site.url }}. Generat automat la build. Pentru index scurt, vezi {{ site.url }}/llms.txt.
+
+{% for post in site.posts %}
+---
+
+## {{ post.title }}
+
+- **URL**: {{ site.url }}{{ post.url }}
+- **Data**: {{ post.date | date: "%Y-%m-%d" }}
+{% if post.categories.size > 0 %}- **Categorii**: {{ post.categories | join: ", " }}{% endif %}
+{% if post.description %}- **Rezumat**: {{ post.description }}{% endif %}
+{% if post.maps_slug %}- **Google Maps**: colecție de locații disponibilă pe pagină (slug: {{ post.maps_slug }}){% endif %}
+
+{{ post.content | strip_html | normalize_whitespace }}
+
+{% endfor %}

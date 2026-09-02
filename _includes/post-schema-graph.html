@@ -1,0 +1,109 @@
+{% assign post_canonical = site.url | append: site.baseurl | append: page.url %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "{{ post_canonical }}#blogposting",
+      "headline": {{ page.title | jsonify }},
+      "description": {% if page.description %}{{ page.description | jsonify }}{% else %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 | jsonify }}{% endif %},
+      "image": "{% if page.image %}{% include image-url.html image=page.image %}{% else %}{{ site.url }}{{ site.baseurl }}/{{ site.og_image }}{% endif %}",
+      "datePublished": "{{ page.date | date_to_xmlschema }}",
+      "dateModified": "{% if page.last_modified_at %}{{ page.last_modified_at | date_to_xmlschema }}{% else %}{{ page.date | date_to_xmlschema }}{% endif %}",
+      "inLanguage": "ro",
+      "author": { "@id": "{{ site.url }}{{ site.baseurl }}/#person-ana" },
+      "publisher": { "@id": "{{ site.url }}{{ site.baseurl }}/#organization" },
+      "isPartOf": { "@id": "{{ site.url }}{{ site.baseurl }}/#blog" },
+      "mainEntityOfPage": { "@id": "{{ post_canonical }}#webpage" },
+      "url": "{{ post_canonical }}",
+      "about": {
+        "@type": "Place",
+        "name": {{ page.title | jsonify }}
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [".post-summary", ".trip-facts"]
+      }{% if page.categories.size > 0 %},
+      "articleSection": {{ page.categories | join: ', ' | jsonify }}{% endif %}{% capture post_keywords %}{% if page.tags.size > 0 %}{{ page.tags | join: ', ' }}{% endif %}{% if page.categories.size > 0 %}{% if page.tags.size > 0 %}, {% endif %}{{ page.categories | join: ', ' }}{% endif %}{% endcapture %}{% if post_keywords != '' %},
+      "keywords": {{ post_keywords | strip | jsonify }}{% endif %}{% if page.rating %},
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "{{ page.rating }}",
+        "bestRating": "5"
+      }{% endif %}
+    },
+    {
+      "@type": "WebPage",
+      "@id": "{{ post_canonical }}#webpage",
+      "url": "{{ post_canonical }}",
+      "name": {{ page.title | jsonify }},
+      "inLanguage": "ro",
+      "isPartOf": { "@id": "{{ site.url }}{{ site.baseurl }}/#website" },
+      "about": { "@type": "Place", "name": {{ page.title | jsonify }} },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "{% if page.image %}{% include image-url.html image=page.image %}{% else %}{{ site.url }}{{ site.baseurl }}/{{ site.og_image }}{% endif %}"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "{{ post_canonical }}#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Acasă",
+          "item": "{{ site.url }}{{ site.baseurl }}/"
+        }{% if page.categories.size > 0 %},
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": {{ page.categories.first | jsonify }},
+          "item": "{{ site.url }}{{ site.baseurl }}/categorie/{{ page.categories.first | slugify }}/"
+        }{% endif %},
+        {
+          "@type": "ListItem",
+          "position": {% if page.categories.size > 0 %}3{% else %}2{% endif %},
+          "name": {{ page.title | jsonify }},
+          "item": "{{ post_canonical }}"
+        }
+      ]
+    }{% if page.trip and page.trip.durata %},
+    {
+      "@type": "TouristTrip",
+      "@id": "{{ post_canonical }}#trip",
+      "name": {{ 'Călătorie la ' | append: page.title | jsonify }},
+      "description": {% if page.description %}{{ page.description | jsonify }}{% else %}{{ 'Ghid de călătorie la ' | append: page.title | jsonify }}{% endif %},
+      "touristType": {% if page.trip.persoane %}{{ page.trip.persoane | append: ' persoane' | jsonify }}{% else %}"Turist"{% endif %},
+      "itinerary": {
+        "@type": "Place",
+        "name": {{ page.title | jsonify }}
+      }{% if page.trip.plecare %},
+      "startDate": "{{ page.trip.plecare | date: '%Y-%m-%d' }}"{% endif %}{% if page.trip.intoarcere %},
+      "endDate": "{{ page.trip.intoarcere | date: '%Y-%m-%d' }}"{% endif %}{% if page.trip.buget_locala and page.trip.valuta %},
+      "offers": {
+        "@type": "Offer",
+        "price": "{{ page.trip.buget_locala }}",
+        "priceCurrency": "{{ page.trip.valuta | currency_code }}"
+      }{% endif %}
+    }{% endif %}{% if page.rating %},
+    {
+      "@type": "Review",
+      "@id": "{{ post_canonical }}#review",
+      "itemReviewed": {
+        "@type": "Place",
+        "name": {{ page.title | jsonify }}
+      },
+      "author": { "@id": "{{ site.url }}{{ site.baseurl }}/#person-ana" },
+      "datePublished": "{{ page.date | date_to_xmlschema }}",
+      "reviewBody": {% if page.description %}{{ page.description | jsonify }}{% else %}{{ page.excerpt | strip_html | strip_newlines | truncate: 500 | jsonify }}{% endif %},
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "{{ page.rating }}",
+        "bestRating": "5"
+      }
+    }{% endif %}
+  ]
+}
+</script>

@@ -55,6 +55,8 @@
 
 <link rel="icon" href="{{ site.baseurl }}/assets/images/favicon.png">
 <link rel="apple-touch-icon" href="{{ site.baseurl }}/assets/images/favicon.png">
+<link rel="alternate" type="text/plain" href="{{ site.url }}/llms.txt" title="LLM index">
+<link rel="alternate" type="application/rss+xml" title="{{ site.name }}" href="{{ site.url }}/feed.xml">
 
 <title>{% if page.title %}{% if page.title == 'Home' %}Acasă{% else %}{{ page.title }}{% endif %} | {{ site.name }}{% else %}{{ site.name }}{% endif %}</title>
 
@@ -196,37 +198,8 @@
 </script>
 {% endif %}
 
-<!-- Structured Data - Organization -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "{{ site.name }}",
-  "url": "{{ site.url }}{{ site.baseurl }}",
-  "logo": "{{ site.url }}{{ site.baseurl }}/{{ site.logo }}",
-  "description": "{{ site.description }}",
-  "sameAs": []
-}
-</script>
-
-<!-- Structured Data - WebSite -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "{{ site.name }}",
-  "url": "{{ site.url }}{{ site.baseurl }}",
-  "description": "{{ site.description }}",
-  "publisher": {
-    "@type": "Organization",
-    "name": "{{ site.name }}",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "{{ site.url }}{{ site.baseurl }}/{{ site.logo }}"
-    }
-  }
-}
-</script>
+<!-- Structured Data - Site @graph -->
+{% include site-schema-graph.html %}
 
 </body>
 </html>

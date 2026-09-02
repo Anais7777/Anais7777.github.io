@@ -4,6 +4,7 @@ title: "Auschwitz"
 maps_slug: auschwitz
 categories: [ Polonia ]
 date: 2025-06-08
+description: "Auschwitz - loc de memorie și tăcere, unde istoria se citește pas cu pas prin lager"
 image: assets/images/Auschwitz/auschwitz.jpg
 toc: true
 beforetoc: "Cuprins"

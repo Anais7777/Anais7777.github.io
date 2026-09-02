@@ -4,6 +4,7 @@ title: "Barcelona"
 maps_slug: barcelona
 categories: [ Spania ]
 date: 2025-05-06
+description: "Barcelona - orașul lui Gaudí și al Ramblei, unde modernismul și Marea Mediterană se salută zilnic"
 image: assets/images/Barcelona/barcelona.jpg
 toc: true
 beforetoc: "Cuprins"

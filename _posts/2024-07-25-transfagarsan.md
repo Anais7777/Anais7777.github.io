@@ -4,6 +4,7 @@ title: "Transfăgărășan"
 maps_slug: transfagarsan
 categories: [ România ]
 date: 2024-07-25
+description: "Transfăgărășan - șoseaua dintre nori, serpentinele care leagă Muntenii de Transilvania"
 image: assets/images/Transfagarasan/transfagarsan.jpg
 toc: true
 beforetoc: "Cuprins"

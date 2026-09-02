@@ -4,6 +4,7 @@ title: "Bassano del Grappa"
 maps_slug: bassano-del-grappa
 categories: [ Italia ]
 date: 2026-05-09
+description: "Bassano del Grappa - orașul podului de lemn și al Grappa-ului, la poalele Dolomiților"
 image: assets/images/Bassano/bassano.jpg
 toc: true
 beforetoc: "Cuprins"

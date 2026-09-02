@@ -4,6 +4,7 @@ title: "Kassandra"
 maps_slug: kassandra
 categories: [ Grecia ]
 date: 2023-07-24
+description: "Kassandra - primul deget al Halkidiki-ului, cu Afitos pe stâncă și plaje unde timpul merge mai încet"
 image: assets/images/Kassandra/kassandra.jpg
 toc: true
 beforetoc: "Cuprins"

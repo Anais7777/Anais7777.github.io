@@ -4,6 +4,7 @@ title: "Český Krumlov"
 maps_slug: cesky-krumlov
 categories: [ Cehia ]
 date: 2026-06-05
+description: "Český Krumlov - oraș de basm pe malul Vltava, cu castelul care domină acoperișurile roșii"
 image: assets/images/CeskyKrumlov/cesky-krumlov.jpg
 thumb_position: bottom
 toc: true

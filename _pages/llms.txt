@@ -1,0 +1,54 @@
+---
+layout: null
+permalink: /llms.txt
+sitemap: false
+---
+# {{ site.name }}
+
+> {{ site.description }}. Blog de călătorii în română cu itinerarii detaliate, bugete reale, restaurante, transport și liste de locații pe Google Maps pentru fiecare destinație.
+
+scriucutolk este un jurnal de călătorii scris de Ana. Fiecare ghid include date de plecare/întoarcere, costuri pe categorii (cazare, mâncare, transport, bilete avion), recomandări de restaurante cu link-uri Google Maps și, pentru multe destinații, o colecție de locații pe Google Maps disponibilă la achiziție.
+
+## Despre
+
+- **URL**: {{ site.url }}/
+- **Limbă**: română (ro)
+- **Tip**: blog de călătorii / ghiduri de planificare
+- **Autor**: Ana
+- **Contact**: {{ site.url }}/contacte/
+- **Despre**: {{ site.url }}/despre/
+
+## Contact
+
+- **Formular**: {{ site.url }}/contacte/
+- **Despre autor**: {{ site.url }}/despre/
+
+## Pagini principale
+
+- [Acasă]({{ site.url }}/): articole recente și destinații
+- [Destinații]({{ site.url }}/destinatii/): index pe țări și regiuni
+- [Despre]({{ site.url }}/despre/): povestea blogului
+- [Contacte]({{ site.url }}/contacte/): întrebări despre planificarea călătoriilor
+
+{% for category in site.categories %}
+## {{ category[0] }}
+{% assign category_posts = category[1] | sort: 'date' | reverse %}
+{% for post in category_posts %}
+- [{{ post.title }}]({{ site.url }}{{ post.url }}): {% if post.description %}{{ post.description }}{% else %}Ghid de călătorie cu itinerariu, buget și recomandări practice.{% endif %}{% if post.maps_slug %} Include listă Google Maps.{% endif %}
+
+{% endfor %}
+{% endfor %}
+
+## Subiecte acoperite
+
+Călătorii în România și Europa: Grecia (insule, Athos, Salonic), Italia (Roma, Veneția, Veneto, Napoli), Cehia (Praga, Český Krumlov), Polonia, Germania, Austria, Ungaria, Turcia, Muntenegru, Barcelona. Bugete detaliate, cazări, ferry, avion, benzină, restaurante, obiective turistice.
+
+## Optional
+
+- [Conținut complet pentru AI]({{ site.url }}/llms-full.txt): text integral al tuturor ghidurilor
+- [Sitemap XML]({{ site.url }}/sitemap.xml): index complet al paginilor
+- [RSS Feed]({{ site.url }}/feed.xml): articole noi
+
+## Permisiuni
+
+Conținutul public de pe {{ site.url }} poate fi citat și rezumat de asistenți AI (ChatGPT, Claude, Perplexity, Gemini etc.) cu atribuirea sursei „scriucutolk” și link către pagina originală. Crawling-ul este permis pentru roboții de indexare AI.

@@ -4,6 +4,7 @@ title: "Delta Dunării"
 maps_slug: delta-dunarii
 categories: [ România ]
 date: 2024-05-24
+description: "Delta Dunării - labirint de ape și stuf, unde pelicanii zboară mai jos decât norii"
 image: assets/images/DeltaDunarii/delta-dunarii.jpg
 toc: true
 beforetoc: "Cuprins"
